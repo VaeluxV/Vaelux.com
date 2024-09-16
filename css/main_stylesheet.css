@@ -1,0 +1,420 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Hero Section */
+.hero {
+    background: url('../images/home/20240520213916_1.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-eurostar-pbka {
+    background: url('../images/irl_trains/Eurostar-PBKA.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-hle18 {
+    background: url('../images/irl_trains/HLE18-M6_1849.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin: 28px 0;
+    text-shadow: 3px 3px 5px #000000;
+}
+
+.hero-hle18 h1 {
+    font-size: 48px;
+    margin: 28px 0;
+    text-shadow: 3px 3px 5px #000000;
+}
+
+.hero p {
+    font-size: 24px;
+}
+
+.hero-hle18 p {
+    font-size: 24px;
+}
+
+.cta-button {
+    background: linear-gradient(45deg, #FF6F91, #FF9671, #FFC75F);
+    color: #1C1C1C;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: linear-gradient(45deg, #FFC75F, #FF9671, #FF6F91);
+}
+
+.cta-button:active {
+    background: rgba(255, 255, 255, 1); /* Fully opaque white background on click */
+}
+
+.h2subhead {
+    padding: 0px 0px 10px 2px;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+}
+
+.feature {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.feature h2 {
+    font-size: 24px;
+}
+
+#loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.subsection {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+}
+
+.subsectiontext {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.subsectiontext h2 {
+    font-size: 24px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(45deg, #FF6F91, #FF9671, #FFC75F);
+    color: #1C1C1C;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header .logo a {
+    color: #1C1C1C;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #1C1C1C;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+header nav ul li a:active {
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+}
+
+footer nav ul li {
+    margin: 10px 0;
+    padding: 0 50px;
+}
+
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer nav ul li a:hover {
+    color: #FF9671;
+}
+
+/* Resources and Tabs */
+.tabs, .sub-tabs {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.tab, .sub-tab {
+    background: linear-gradient(45deg, #FF6F91, #FF9671, #FFC75F);
+    border-radius: 10px 10px 0 0;
+    color: #1C1C1C;
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.tab:hover, .sub-tab:hover {
+    background: linear-gradient(45deg, #FFC75F, #FF9671, #FF6F91);
+}
+
+.tab.active, .sub-tab.active {
+    background: white;
+    border-bottom: 2px solid #FF6F91;
+}
+
+.tab-content, .sub-tab-content {
+    display: none;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #FF6F91;
+}
+
+.tab-content.active, .sub-tab-content.active {
+    display: block;
+}
+
+.placeholder-image {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid #FF6F91;
+    border-radius: 10px;
+    background: #FFF5F5;
+    transition: border 0.3s ease, background 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: #FFC75F;
+    background: #FFF0E0;
+}
+
+.project-card img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.project-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.project-card p {
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Socials Page */
+.social-button {
+    background: none;
+    color: #FF6F91;
+    padding: 10px;
+    border: 2px solid #FF6F91;
+    border-radius: 50px;
+    font-size: 18px;
+    margin: 10px 0;
+    width: 75%;
+    display: block;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.social-button:hover {
+    background: #FF6F91;
+    color: #fff;
+}
+
+.social-button:active {
+    background: rgba(255, 255, 255, 1);
+    color: #FF6F91;
+}
+
+/* Fullscreen Image Modal */
+#fullscreen-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    overflow: hidden;
+    text-align: center;
+}
+
+#fullscreen-image {
+    max-width: 90%;
+    max-height: 90%;
+    margin-top: 5%;
+    display: inline-block;
+}
+
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+    outline: none;
+}
+
+.modal-info {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.modal-info p {
+    font-size: 18px;
+}
+
+
+/* Specific CSS for Resource Tabs */
+.resource-tabs-container {
+    border-top: 2px solid #FF6F91;
+    width: 100%;
+}
+
+.resource-tabs {
+    display: flex;
+    justify-content: center;
+    background: white;
+    margin-bottom: 0;
+}
+
+.resource-tab {
+    flex: 1;
+    background: linear-gradient(45deg, #FF6F91, #FF9671, #FFC75F);
+    color: #1C1C1C;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-align: center;
+}
+
+.resource-tab:hover {
+    background: linear-gradient(45deg, #FFC75F, #FF9671, #FF6F91);
+}
+
+.resource-tab.active {
+    background: white;
+    border-top: 2px solid #FF6F91;
+    border-bottom: none;
+}
+
+.resource-tab-content-container {
+    border-top: none;
+    border-left: 2px solid #FF6F91;
+    border-right: 2px solid #FF6F91;
+    border-bottom: 2px solid #FF6F91;
+    padding: 20px;
+    width: 100%;
+}
+
+.resource-tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.resource-tab-content.active {
+    display: block;
+}

@@ -1,0 +1,33 @@
+/* Gallery styles */
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 10px;
+    gap: 8px;
+}
+
+.feature {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+}
+
+.feature img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    cursor: pointer; /* Makes it clear the images are clickable */
+}
+
+@media (max-width: 1160px) {
+    .feature {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}

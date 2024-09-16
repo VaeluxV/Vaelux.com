@@ -1,0 +1,33 @@
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+}
+
+footer nav ul li {
+    margin: 10px 0;
+    padding: 0 50px;
+}
+
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer nav ul li a:hover {
+    color: #FF9671;
+}
