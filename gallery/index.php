@@ -26,7 +26,7 @@
                     // Convert server path to web-accessible path
                     $imagePath = str_replace($_SERVER['DOCUMENT_ROOT'], '', $image);
                     echo '<div class="feature">';
-                    echo '<a href="' . $imagePath . '" target="_blank"><img src="' . $imagePath . '" alt="Photo"></a>';
+                    echo '<a href="' . $imagePath . '" target="_blank" rel="noreferrer noopener"><img src="' . $imagePath . '" alt="Photo"></a>';
                     echo '</div>';
                 }
             ?>
