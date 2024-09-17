@@ -26,21 +26,21 @@ main {
     background: url('../images/home/20240520213916_1.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
-    padding: 10% 20px;
+    padding: 8% 20px;
 }
 
 .hero-eurostar-pbka {
     background: url('../images/irl_trains/Eurostar-PBKA.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
-    padding: 10% 20px;
+    padding: 8% 20px;
 }
 
 .hero-hle18 {
     background: url('../images/irl_trains/HLE18-M6_1849.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
-    padding: 10% 20px;
+    padding: 8% 20px;
 }
 
 .hero h1 {
