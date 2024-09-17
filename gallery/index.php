@@ -12,7 +12,8 @@
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
 
     <main>
-        <h1 style="text-align: center; padding: 45px 0px 0px 0px">Photo gallery</h1>
+        <h1 style="text-align: center; padding: 44px 0px 0px 0px">Photo gallery</h1>
+        <p style="text-align: center; padding: 14px 28px 0px 28px">Hint: You can click on a photo to view a full-screen, high resolution version of it!</p>
         <section class="features">
             <?php
                 include $_SERVER['DOCUMENT_ROOT'] . '/gallery/generate_thumbnails.php';
