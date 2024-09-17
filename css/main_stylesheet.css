@@ -26,32 +26,38 @@ main {
     background: url('../images/home/20240520213916_1.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
-    padding: 100px 20px;
+    padding: 10% 20px;
 }
 
 .hero-eurostar-pbka {
     background: url('../images/irl_trains/Eurostar-PBKA.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
-    padding: 100px 20px;
+    padding: 10% 20px;
 }
 
 .hero-hle18 {
     background: url('../images/irl_trains/HLE18-M6_1849.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
-    padding: 100px 20px;
+    padding: 10% 20px;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin: 28px 0;
+    font-size: 62px;
+    margin: 38px 0;
+    text-shadow: 3px 3px 5px #000000;
+}
+
+.hero-eurostar-pbka h1 {
+    font-size: 62px;
+    margin: 38px 0;
     text-shadow: 3px 3px 5px #000000;
 }
 
 .hero-hle18 h1 {
-    font-size: 48px;
-    margin: 28px 0;
+    font-size: 62px;
+    margin: 38px 0;
     text-shadow: 3px 3px 5px #000000;
 }
 
