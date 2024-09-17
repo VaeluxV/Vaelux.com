@@ -29,43 +29,13 @@ main {
     padding: 8% 20px;
 }
 
-.hero-eurostar-pbka {
-    background: url('../images/irl_trains/Eurostar-PBKA.jpg') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 8% 20px;
-}
-
-.hero-hle18 {
-    background: url('../images/irl_trains/HLE18-M6_1849.jpg') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 8% 20px;
-}
-
 .hero h1 {
     font-size: 62px;
     margin: 38px 0;
     text-shadow: 3px 3px 5px #000000;
 }
 
-.hero-eurostar-pbka h1 {
-    font-size: 62px;
-    margin: 38px 0;
-    text-shadow: 3px 3px 5px #000000;
-}
-
-.hero-hle18 h1 {
-    font-size: 62px;
-    margin: 38px 0;
-    text-shadow: 3px 3px 5px #000000;
-}
-
 .hero p {
-    font-size: 24px;
-}
-
-.hero-hle18 p {
     font-size: 24px;
 }
 
@@ -136,82 +106,6 @@ main {
 
 .subsectiontext h2 {
     font-size: 24px;
-}
-
-/* Header */
-header {
-    background: linear-gradient(45deg, #FF6F91, #FF9671, #FFC75F);
-    color: #1C1C1C;
-    padding: 20px 0;
-    text-align: center;
-}
-
-header .logo a {
-    color: #1C1C1C;
-    font-size: 24px;
-    text-decoration: none;
-}
-
-header nav ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-header nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-header nav ul li a {
-    color: #1C1C1C;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-header nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-header nav ul li a:active {
-    background: rgba(255, 255, 255, 1);
-}
-
-/* Footer */
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-footer nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px;
-}
-
-footer nav ul li {
-    margin: 10px 0;
-    padding: 0 50px;
-}
-
-footer nav ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-footer nav ul li a:hover {
-    color: #FF9671;
 }
 
 /* Resources and Tabs */

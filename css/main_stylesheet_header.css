@@ -41,7 +41,7 @@ header nav ul li a:active {
 }
 
 /* Optional Media Query for very small screens */
-@media (max-width: 500px) {
+@media (max-width: 540px) {
     header nav ul {
         flex-direction: column; /* Stack items vertically on very small screens */
         margin-top: 10px;

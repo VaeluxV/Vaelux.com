@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Projects</title>
     <link rel="icon" type="image/x-icon" href="/images/favicons/main/favicon.ico">
     <link rel="stylesheet" href="/css/main_stylesheet.css">
+    <link rel="stylesheet" href="/css/projects_stylesheet.css">
 </head>
 <body>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
 
     <main>
-        <section class="hero-eurostar-pbka">
-            <h1>Welcome!</h1>
+        <section class="hero" style="background: url('../images/irl_trains/NS-TRAXX-E186-011.JPG') no-repeat center center/cover;">
+            <h1>My projects</h1>
             <p></p>
-            <a href="/about-me" class="cta-button">More info about me</a>
+            <a href="/train-sim-project" class="cta-button">Modular Train Sim Cab</a>
+            <a href="/gallery" class="cta-button-inverted">More Coming Soon...</a>
         </section>
 
         <section class="features">

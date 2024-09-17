@@ -11,7 +11,7 @@
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
 
     <main>
-        <section class="hero-eurostar-pbka">
+        <section class="hero" style="background: url('../images/irl_trains/Eurostar-PBKA.jpg') no-repeat center center/cover;">
             <h1>Welcome!</h1>
             <p></p>
             <a href="/about-me" class="cta-button">More info about me</a>

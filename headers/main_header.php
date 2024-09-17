@@ -9,6 +9,7 @@
             <li><a href="/socials">Socials</a></li>
             <li><a href="/gallery">Photo gallery</a></li>
             <li><a href="/train-sim-project">My Train Simulator Cab Project</a></li>
+            <li><a href="/projects">My Projects</a></li>
         </ul>
     </nav>
 </header>
