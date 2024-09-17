@@ -15,18 +15,62 @@
         <h1 style="text-align: center; padding: 45px 0px 0px 0px">Photo gallery</h1>
         <section class="features">
             <?php
-                // Directory where photos are stored
-                $dir = $_SERVER['DOCUMENT_ROOT'] . '/images/photo_library/'; 
+                function createThumbnail($src, $dest, $width, $height) {
+                    list($orig_width, $orig_height, $type) = getimagesize($src);
+                    $image = null;
+                    
+                    switch ($type) {
+                        case IMAGETYPE_JPEG:
+                            $image = imagecreatefromjpeg($src);
+                            break;
+                        case IMAGETYPE_PNG:
+                            $image = imagecreatefrompng($src);
+                            break;
+                        case IMAGETYPE_GIF:
+                            $image = imagecreatefromgif($src);
+                            break;
+                        default:
+                            return false;
+                    }
+                    
+                    $thumb = imagecreatetruecolor($width, $height);
+                    imagecopyresampled($thumb, $image, 0, 0, 0, 0, $width, $height, $orig_width, $orig_height);
+                    
+                    // Save thumbnail as JPG
+                    imagejpeg($thumb, $dest, 90);
+                    
+                    imagedestroy($image);
+                    imagedestroy($thumb);
+                    return true;
+                }
+
+                // Set your directories
+                $dir = $_SERVER['DOCUMENT_ROOT'] . '/images/photo_library/';
+                $thumbDir = $_SERVER['DOCUMENT_ROOT'] . '/images/photo_library/thumbnails/';
+                
+                // Create thumbnails directory if it does not exist
+                if (!file_exists($thumbDir)) {
+                    mkdir($thumbDir, 0777, true);
+                }
                 
                 // Retrieve all image files from the specified directory
                 $images = glob($dir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-
-                // Loop through each image and create a feature div with the image
-                foreach($images as $image) {
+                foreach ($images as $image) {
+                    $thumbPath = $thumbDir . basename($image);
+                    
+                    // Check if the thumbnail already exists, if not create it
+                    if (!file_exists($thumbPath)) {
+                        createThumbnail($image, $thumbPath, 1920, 1080);
+                    }
+                    
                     // Convert server path to web-accessible path
                     $imagePath = str_replace($_SERVER['DOCUMENT_ROOT'], '', $image);
+                    $thumbPath = str_replace($_SERVER['DOCUMENT_ROOT'], '', $thumbPath);
+                    
                     echo '<div class="feature">';
-                    echo '<a href="' . $imagePath . '" target="_blank" rel="noreferrer noopener"><img src="' . $imagePath . '" alt="Photo"></a>';
+                    echo '<a href="' . $imagePath . '" target="_blank" rel="noreferrer noopener">';
+                    echo '<img src="' . $thumbPath . '" alt="Photo">';
+                    echo '</a>';
                     echo '</div>';
                 }
             ?>
