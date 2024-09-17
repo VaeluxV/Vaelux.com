@@ -15,7 +15,7 @@
         <h1 style="text-align: center; padding: 45px 0px 0px 0px">Photo gallery</h1>
         <section class="features">
             <?php
-                function createThumbnail($src, $dest, $width, $height) {
+                function createThumbnail($src, $dest, $width, $height, $quality = 40) {
                     list($orig_width, $orig_height, $type) = getimagesize($src);
                     $image = null;
                     
@@ -32,25 +32,61 @@
                         default:
                             return false;
                     }
-                    
+                
+                    // Calculate aspect ratios
+                    $orig_aspect = $orig_width / $orig_height;
+                    $thumb_aspect = $width / $height;
+                
+                    if ($orig_aspect >= $thumb_aspect) {
+                        // Original image is wider or the same aspect ratio as thumbnail
+                        $new_height = $height;
+                        $new_width = (int)($height * $orig_aspect);
+                    } else {
+                        // Original image is taller or the same aspect ratio as thumbnail
+                        $new_width = $width;
+                        $new_height = (int)($width / $orig_aspect);
+                    }
+                
+                    // Calculate cropping area
+                    $crop_x = (int)(($new_width - $width) / 2);
+                    $crop_y = (int)(($new_height - $height) / 2);
+                
+                    // Create a new true color image
                     $thumb = imagecreatetruecolor($width, $height);
-                    imagecopyresampled($thumb, $image, 0, 0, 0, 0, $width, $height, $orig_width, $orig_height);
-                    
-                    // Save thumbnail as JPG
-                    imagejpeg($thumb, $dest, 90);
+                
+                    // Resize and crop image
+                    $resized_image = imagecreatetruecolor($new_width, $new_height);
+                    imagecopyresampled($resized_image, $image, 0, 0, 0, 0, $new_width, $new_height, $orig_width, $orig_height);
+                    imagecopy($thumb, $resized_image, 0, 0, $crop_x, $crop_y, $width, $height);
+                
+                    // Save thumbnail as JPG with specified quality
+                    imagejpeg($thumb, $dest, $quality);
                     
                     imagedestroy($image);
                     imagedestroy($thumb);
+                    imagedestroy($resized_image);
+                
                     return true;
                 }
-
-                // Set your directories
+                
+                // Set directories
                 $dir = $_SERVER['DOCUMENT_ROOT'] . '/images/photo_library/';
                 $thumbDir = $_SERVER['DOCUMENT_ROOT'] . '/images/photo_library/thumbnails/';
                 
-                // Create thumbnails directory if it does not exist
+                // Create thumbnails directory if they do not exist
                 if (!file_exists($thumbDir)) {
                     mkdir($thumbDir, 0777, true);
+                }
+                
+                // Process all images
+                $images = glob($dir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+                foreach ($images as $image) {
+                    $thumbPath = $thumbDir . basename($image);
+                    
+                    // Check if the thumbnail already exists
+                    if (!file_exists($thumbPath)) {
+                        createThumbnail($image, $thumbPath, 1280, 720);
+                    }
                 }
                 
                 // Retrieve all image files from the specified directory
@@ -60,7 +96,7 @@
                     
                     // Check if the thumbnail already exists, if not create it
                     if (!file_exists($thumbPath)) {
-                        createThumbnail($image, $thumbPath, 1920, 1080);
+                        createThumbnail($image, $thumbPath, 1280, 720);
                     }
                     
                     // Convert server path to web-accessible path

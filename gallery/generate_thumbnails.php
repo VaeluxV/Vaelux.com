@@ -1,5 +1,5 @@
 <?php
-function createThumbnail($src, $dest, $width, $height, $quality = 50) {
+function createThumbnail($src, $dest, $width, $height, $quality = 40) {
     list($orig_width, $orig_height, $type) = getimagesize($src);
     $image = null;
     
@@ -53,11 +53,11 @@ function createThumbnail($src, $dest, $width, $height, $quality = 50) {
     return true;
 }
 
-// Set your directories
+// Set directories
 $dir = $_SERVER['DOCUMENT_ROOT'] . '/images/photo_library/';
 $thumbDir = $_SERVER['DOCUMENT_ROOT'] . '/images/photo_library/thumbnails/';
 
-// Create thumbnails directory if it does not exist
+// Create thumbnails directory if they do not exist
 if (!file_exists($thumbDir)) {
     mkdir($thumbDir, 0777, true);
 }
@@ -69,7 +69,7 @@ foreach ($images as $image) {
     
     // Check if the thumbnail already exists
     if (!file_exists($thumbPath)) {
-        createThumbnail($image, $thumbPath, 1920, 1080);
+        createThumbnail($image, $thumbPath, 1280, 720);
     }
 }
 ?>
