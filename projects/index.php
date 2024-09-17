@@ -12,7 +12,7 @@
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
 
     <main>
-        <section class="hero" style="background: url('../images/irl_trains/NS-TRAXX-E186-011.JPG') no-repeat center center/cover;">
+        <section class="hero" style="background: url('/images/irl_trains/NS-TRAXX-E186-011.jpg') no-repeat center center/cover;">
             <h1>My projects</h1>
             <p></p>
             <a href="/train-sim-project" class="cta-button">Modular Train Sim Cab</a>
