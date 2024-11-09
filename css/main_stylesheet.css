@@ -9,7 +9,8 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-    color: #333;
+    color: #f3e0eb;
+    background-color: #222222;
 }
 
 body {
@@ -40,27 +41,27 @@ main {
 }
 
 .cta-button {
-    background: linear-gradient(45deg, #FF6F91, #FF9671, #FFC75F);
-    color: #1C1C1C;
+    background: #0b76c7;
+    color: #e0e7f3;
     padding: 10px 20px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 22px;
     font-size: 18px;
     border: none;
     cursor: pointer;
     display: inline-block;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .cta-button:hover {
-    background: linear-gradient(45deg, #FFC75F, #FF9671, #FF6F91);
+    background: #c11b8a;
 }
 
 .cta-button:active {
-    background: rgba(255, 255, 255, 1); /* Fully opaque white background on click */
+    background: rgb(220, 220, 220); /* Fully opaque white background on click */
 }
 
-.cta-button-inverted {
+/* .cta-button-inverted {
     background: linear-gradient(45deg, #FFC75F, #FF9671, #FF6F91);
     color: #1C1C1C;
     padding: 10px 20px;
@@ -78,8 +79,8 @@ main {
 }
 
 .cta-button-inverted:active {
-    background: rgba(255, 255, 255, 1); /* Fully opaque white background on click */
-}
+    background: #9c6d99; /* Fully opaque white background on click
+} */
 
 .h2subhead {
     padding: 0px 0px 10px 2px;

@@ -25,11 +25,13 @@
     font-size: 24px;
     text-align: center;
     text-decoration: none;
-    color: #1C1C1C;
+    color: #f3e0eb;
     border: 2px solid transparent;
     border-radius: 50px; /* Fully rounded corners */
-    background: linear-gradient(45deg, #FF6F91, #FF9671, #FFC75F);
+    background: linear-gradient(45deg, #0b76c7, #c11b8a);
     transition: background 0.3s ease, border-color 0.3s ease;
+    border-color: #1c1c1c;
+    border-width: 3px;
 }
 
 .social-button i {
@@ -38,11 +40,11 @@
 }
 
 .social-button:hover {
-    background: white;
-    border-color: #FF6F91;
+    background: linear-gradient(45deg, #0963a8, #a41775);
+    border-color: #f3e0eb;
 }
 
 .social-button:active {
-    background: #FF6F91;
-    color: white;
+    background: #b583d0;
+    color: f3e0eb;
 }

@@ -19,11 +19,6 @@
 
         <section class="features">
             <div class="feature">
-                <h2>Open Source</h2>
-                <p>The whole project is open source and is licensed with the very permissive GPL-3.0 license.</p>
-                <h3>More info coming soon.</h3>
-            </div>
-            <div class="feature">
                 <h2>Website WIP</h2>
                 <p>The website is still a work in progress.</p>
             </div>

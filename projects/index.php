@@ -16,7 +16,7 @@
             <h1>My projects</h1>
             <p></p>
             <a href="/train-sim-project" class="cta-button">Modular Train Sim Cab</a>
-            <a href="/gallery" class="cta-button-inverted">More Coming Soon...</a>
+            <a href="/gallery" class="cta-button">More Coming Soon...</a>
         </section>
 
         <section class="features">

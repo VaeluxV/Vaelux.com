@@ -1,12 +1,12 @@
 header {
-    background: linear-gradient(45deg, #FF6F91, #FF9671, #FFC75F);
-    color: #1C1C1C;
+    background: linear-gradient(45deg, #0b76c7, #c11b8a);
+    color: #f3e0eb;
     padding: 20px 0;
     text-align: center;
 }
 
 header .logo a {
-    color: #1C1C1C;
+    color: #f3e0eb;
     font-size: 24px;
     text-decoration: none;
 }
@@ -25,10 +25,10 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #1C1C1C;
+    color: #f3e0eb;
     text-decoration: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 50px;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
