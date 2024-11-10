@@ -9,7 +9,7 @@
         <ul>
             <li><a href="/socials">My Socials</a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="/train-sim-project">Train Sim Project</a></li>
+            <li><a href="#">My projects</a></li>
         </ul>
     </nav>
 </footer>
