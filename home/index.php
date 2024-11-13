@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,24 @@
     <link rel="icon" type="image/x-icon" href="/images/favicons/main/favicon.ico">
     <link rel="stylesheet" href="/css/main_stylesheet.css">
 </head>
+
 <body>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
+
+    <!-- Pre-load images -->
+    <?php
+    // Directory path for the images
+    $directory = '/images/irl_trains';
+
+    // Get all image files in the directory
+    $images = glob($_SERVER['DOCUMENT_ROOT'] . $directory . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+
+    foreach ($images as $image) {
+        // Generate a hidden <img> tag for each image
+        $imagePath = $directory . '/' . basename($image);
+        echo '<img src="' . htmlspecialchars($imagePath) . '" style="display: none;" alt="">';
+    }
+    ?>
 
     <main>
         <section class="hero-container">
@@ -83,4 +100,5 @@
           </script>";
     ?>
 </body>
+
 </html>

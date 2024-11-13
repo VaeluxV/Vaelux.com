@@ -33,7 +33,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 header nav ul li a:active {
