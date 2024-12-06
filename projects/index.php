@@ -40,7 +40,8 @@
                 <img src="/images/irl_trains/ultra_low_res/02_NMBS-SNCB-HLE18-M6-1860.jpg" alt="Project 1">
                 <div class="project-card-content">
                     <h3>Project 1</h3>
-                    <p>Placeholder text about the project. This page is still a WIP, check back soon!</p>
+                    <p>Placeholder text about the project.</p>
+                    <p>This page is still a WIP, check back soon!</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
             </div>
@@ -49,6 +50,7 @@
                 <div class="project-card-content">
                     <h3>Project 2</h3>
                     <p>Placeholder text about the project.</p>
+                    <p>This page is still a WIP, check back soon!</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
             </div>
@@ -57,6 +59,7 @@
                 <div class="project-card-content">
                     <h3>Project 3</h3>
                     <p>Placeholder text about the project.</p>
+                    <p>This page is still a WIP, check back soon!</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
             </div>
@@ -65,6 +68,7 @@
                 <div class="project-card-content">
                     <h3>Project 4</h3>
                     <p>Placeholder text about the project.</p>
+                    <p>This page is still a WIP, check back soon!</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
             </div>
@@ -73,6 +77,7 @@
                 <div class="project-card-content">
                     <h3>Project 5</h3>
                     <p>Placeholder text about the project.</p>
+                    <p>This page is still a WIP, check back soon!</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
             </div>
@@ -81,6 +86,7 @@
                 <div class="project-card-content">
                     <h3>Project 6</h3>
                     <p>Placeholder text about the project.</p>
+                    <p>This page is still a WIP, check back soon!</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
             </div>
@@ -89,6 +95,7 @@
                 <div class="project-card-content">
                     <h3>Project 7</h3>
                     <p>Placeholder text about the project.</p>
+                    <p>This page is still a WIP, check back soon!</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
             </div>
