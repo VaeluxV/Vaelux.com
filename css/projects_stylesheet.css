@@ -1,1 +1,94 @@
-/* Projects Page Styles */
+/* Hero Section - Title and Subtitle Shadow */
+.hero-content h1 {
+    font-size: 48px;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    color: #ddd;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Matches the shadow of the title */
+    margin-top: 0;
+}
+
+/* Projects Section - Cards */
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.project-card {
+    flex: 1 1 calc(33.333% - 40px); /* Three per row on desktop */
+    background: #222; /* Dark background for dark mode */
+    border: 2px solid #444; /* Subtle initial border */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Initial shadow */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    max-width: 400px;
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Ensures no stretching or dead space */
+    border-bottom: 2px solid #444;
+}
+
+.project-card-content {
+    padding: 20px;
+}
+
+.project-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #fff; /* White text for dark mode */
+}
+
+.project-card p {
+    font-size: 16px;
+    color: #aaa; /* Subtle gray for less emphasis */
+    margin-bottom: 20px;
+}
+
+.project-card .cta-button {
+    background: #0b76c7;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px; /* Fully rounded edges */
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.project-card .cta-button:hover {
+    background: #c11b8a;
+    /* transform: scale(1.05); */
+}
+
+/* Hover Effect for Project Cards */
+.project-card:hover {
+    background: #222; /* Ensure background remains consistent */
+    border-color: #c11b8a; /* Border changes to magenta color upon hover */
+    box-shadow: 0 0 15px rgba(193, 27, 138, 0.8); /* Magenta glow effect */
+    transform: translateY(-5px); /* Subtle lift on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 1000px) {
+    .project-card {
+        flex: 1 1 calc(50% - 40px); /* Two per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .project-card {
+        flex: 1 1 100%; /* One per row */
+        max-width: 100%;
+    }
+}
