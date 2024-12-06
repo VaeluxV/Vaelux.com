@@ -1,4 +1,7 @@
+/* Socials section */
 .socials {
+    flex: 1; /* Allow this section to grow/shrink as needed */
+    max-width: 600px; /* Constrain the width */
     padding: 20px;
     text-align: center;
 }
@@ -10,7 +13,7 @@
 
 .social-buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Default to stacked layout */
     align-items: center;
 }
 
@@ -46,5 +49,17 @@
 
 .social-button:active {
     background: #b583d0;
-    color: f3e0eb;
+    color: #f3e0eb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .socials h1 {
+        font-size: 28px; /* Slightly smaller heading on mobile */
+    }
+
+    .social-button {
+        width: 90%; /* Increase width for smaller screens */
+        font-size: 20px; /* Reduce font size for better fit */
+    }
 }
