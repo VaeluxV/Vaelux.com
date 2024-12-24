@@ -1,0 +1,44 @@
+[
+    {
+        "type": "image",
+        "title": "Eurostar PBKA 4341",
+        "src": "/images/photo_library/Eurostar-PBKA_4341.jpg",
+        "tags": ["train", "eurostar", "high-speed", "eurostar-pbka"],
+        "description": "A high-speed Eurostar PBKA train. <br>Photographed at Duffel station"
+    },
+    {
+        "type": "video",
+        "title": "Thalys PBKA & PBA",
+        "src": "https://www.youtube.com/embed/jP-ZTEYrwms",
+        "tags": ["train", "brussels-midi", "spotting", "eurostar-pbka", "eurostar-pba", "thalys-pbka", "thalys-pba"],
+        "description": "A Thalys PBKA & PBA leaving Brussels Midi station"
+    },
+    {
+        "type": "image",
+        "title": "Eurostar E320 4029",
+        "src": "/images/photo_library/Eurostar-E320_4029.jpg",
+        "tags": ["train", "eurostar", "high-speed", "eurostar-e320"],
+        "description": "A high-speed Eurostar E320 train. <br>Photographed at Duffel station"
+    },
+    {
+        "type": "image",
+        "title": "HLE18 & M6",
+        "src": "/images/photo_library/HLE18-M6_1849.jpg",
+        "tags": ["train", "double-deck", "nmbs-sncb-m6", "nmbs-sncb-hle18", "nmbs-sncb"],
+        "description": "An HLE18 locomotive pulling M6 coaches. <br>Photographed at Duffel station"
+    },
+    {
+        "type": "video",
+        "title": "NS Flow VIRM",
+        "src": "https://www.youtube.com/embed/mUB05wU6FVk",
+        "tags": ["train", "spotting", "ns", "ns-virm"],
+        "description": "An NS VIRM in 'Flow' lovery leaving Utrecht Central station."
+    },
+    {
+        "type": "image",
+        "title": "NS ICNG-B 3311",
+        "src": "/images/photo_library/ICNG-B_3311.jpg",
+        "tags": ["train", "ns-icng-b", "high-speed", "ns"],
+        "description": "A high-speed NS ICNG-B train numbered 3311."
+    }
+]

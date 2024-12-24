@@ -24,7 +24,7 @@ header nav ul li {
     margin: 10px 15px; /* Horizontal space between items */
 }
 
-header nav ul li a {
+.header a {
     color: #f3e0eb;
     text-decoration: none;
     padding: 10px 15px;
@@ -32,11 +32,11 @@ header nav ul li a {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-header nav ul li a:hover {
+.header a:hover {
     background: rgba(255, 255, 255, 0.12);
 }
 
-header nav ul li a:active {
+.header a:active {
     background: rgba(255, 255, 255, 1);
 }
 
