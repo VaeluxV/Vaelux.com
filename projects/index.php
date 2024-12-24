@@ -36,69 +36,38 @@
 
         <!-- Projects Section -->
         <section class="projects-container">
-        <div class="project-card">
-                <img src="/images/irl_trains/ultra_low_res/02_NMBS-SNCB-HLE18-M6-1860.jpg" alt="Project 1">
-                <div class="project-card-content">
-                    <h3>Project 1</h3>
-                    <p>Placeholder text about the project.</p>
-                    <p>This page is still a WIP, check back soon!</p>
-                    <a href="#" class="cta-button">Learn More</a>
-                </div>
-            </div>
+
             <div class="project-card">
-                <img src="/images/irl_trains/ultra_low_res/06_NS-TRAXX-E186-011.jpg" alt="Project 2">
+                <img src="/images/irl_trains/ultra_low_res/06_NS-TRAXX-E186-011.jpg" alt="Project Cover Image">
                 <div class="project-card-content">
-                    <h3>Project 2</h3>
-                    <p>Placeholder text about the project.</p>
-                    <p>This page is still a WIP, check back soon!</p>
-                    <a href="#" class="cta-button">Learn More</a>
+                    <h3>This website!</h3>
+                    <p>This website is a little project I like to work on from time to time.</p>
+                    <p>Feel free to look around!</p>
+                    <a href="https://github.com/VaeluxV/Vaelux.com" class="cta-button" target="_blank" rel="noopener noreferrer">Website GitHub repo</a>
                 </div>
             </div>
+
             <div class="project-card">
-                <img src="/images/irl_trains/ultra_low_res/04_NMBS-SNCB-M6-HLE18-1839.jpg" alt="Project 3">
+                <img src="/images/projects/modular_train_sim/renders/MTS-v0.9.8-Render-2024-12-14-17-46-28.png" alt="Modular Train Simulator Project Cover Image">
                 <div class="project-card-content">
-                    <h3>Project 3</h3>
-                    <p>Placeholder text about the project.</p>
-                    <p>This page is still a WIP, check back soon!</p>
+                    <h3>MTS Project</h3>
+                    <p>The MTS (Modular Train Simulator) Project is my take on a homemade, modular controller for train simulators.</p>
+                    <p>This project is in an unfinished state.</p>
                     <a href="#" class="cta-button">Learn More</a>
                 </div>
             </div>
+
             <div class="project-card">
-                <img src="/images/irl_trains/ultra_low_res/08_Eurostar-PBKA-4341.jpg" alt="Project 4">
+                <img src="/images/projects/vertexarmor_enclosure/Render-V2.3_2024-06-20_1.jpg" alt="VertexArmor-Enclosure Cover Image">
                 <div class="project-card-content">
-                    <h3>Project 4</h3>
-                    <p>Placeholder text about the project.</p>
-                    <p>This page is still a WIP, check back soon!</p>
-                    <a href="#" class="cta-button">Learn More</a>
+                    <h3>VertexArmor</h3>
+                    <p>VertexArmor is an enclosure designed for my custom SlimeVR PCB</p>
+                    <a href="https://github.com/VaeluxV/VertexArmor-Enclosure/" class="cta-button" target="_blank" rel="noopener noreferrer">GitHub repo</a>
+                    <br><br>
+                    <a href="https://slimevr.dev/" class="cta-button" target="_blank" rel="noopener noreferrer">SlimeVR Website</a>
                 </div>
             </div>
-            <div class="project-card">
-                <img src="/images/irl_trains/ultra_low_res/10_Eurostar-E320-4014.jpg" alt="Project 5">
-                <div class="project-card-content">
-                    <h3>Project 5</h3>
-                    <p>Placeholder text about the project.</p>
-                    <p>This page is still a WIP, check back soon!</p>
-                    <a href="#" class="cta-button">Learn More</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="/images/irl_trains/ultra_low_res/09_NMBS-SNCB-TRAXX-E186-207.jpg" alt="Project 6">
-                <div class="project-card-content">
-                    <h3>Project 6</h3>
-                    <p>Placeholder text about the project.</p>
-                    <p>This page is still a WIP, check back soon!</p>
-                    <a href="#" class="cta-button">Learn More</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="/images/irl_trains/ultra_low_res/03_NS-ICNG-B-331.jpg" alt="Project 7">
-                <div class="project-card-content">
-                    <h3>Project 7</h3>
-                    <p>Placeholder text about the project.</p>
-                    <p>This page is still a WIP, check back soon!</p>
-                    <a href="#" class="cta-button">Learn More</a>
-                </div>
-            </div>
+
         </section>
     </main>
 
