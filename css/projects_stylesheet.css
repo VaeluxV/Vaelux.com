@@ -26,7 +26,7 @@
     flex: 1 1 calc(33.333% - 40px); /* Three per row on desktop */
     background: #222; /* Dark background for dark mode */
     border: 2px solid #444; /* Subtle initial border */
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Initial shadow */
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -76,7 +76,7 @@
     background: #222; /* Ensure background remains consistent */
     border-color: #c11b8a; /* Border changes to magenta color upon hover */
     box-shadow: 0 0 15px rgba(193, 27, 138, 0.8); /* Magenta glow effect */
-    transform: translateY(-5px); /* Subtle lift on hover */
+    transform: translateY(-4px); /* Subtle lift on hover */
 }
 
 /* Responsive Design */
