@@ -1,9 +1,17 @@
 <?php
-$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+// Determine the requested page
+$page = $_GET['page'] ?? trim($_SERVER['REQUEST_URI'], '/');
 $allowed_pages = ['home', 'projects', 'gallery', 'about', 'contact'];
 
 if (!in_array($page, $allowed_pages)) {
-    $page = 'home';
+    $page = 'home'; // Default to home if invalid
+}
+
+$is_ajax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+
+if ($is_ajax) {
+    include "pages/$page.php";
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -11,7 +19,7 @@ if (!in_array($page, $allowed_pages)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaelux.com</title>
+    <title>My Website</title>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>

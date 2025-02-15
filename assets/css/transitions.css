@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+#content {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#content {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#content.fade-out {
+    opacity: 0;
+}
+
+#content.fade-in {
+    opacity: 1;
+}
