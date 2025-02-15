@@ -1,12 +1,14 @@
+/* Top Navigation Gradient */
 header {
-    background: linear-gradient(45deg, #0b76c7, #c11b8a);
-    color: #f3e0eb;
+    background: linear-gradient(45deg, #fa7cc5, #4dd7e9, #7DFF92);
+    position: relative;
+    color: #1a1819;
     padding: 20px 0;
     text-align: center;
 }
 
 header .logo a {
-    color: #f3e0eb;
+    color: #1a1819;
     font-size: 24px;
     text-decoration: none;
 }
@@ -25,7 +27,7 @@ header nav ul li {
 }
 
 .header a {
-    color: #f3e0eb;
+    color: #1a1819;
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 50px;

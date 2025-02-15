@@ -9,7 +9,7 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-    color: #f3e0eb;
+    color: #f5e4f2;
     background-color: #222222;
 }
 
@@ -70,9 +70,10 @@ main {
     font-size: 24px;
 }
 
+/* Button Styling */
 .cta-button {
-    background: #0b76c7;
-    color: #e0e7f3;
+    background: #FA7CE7;
+    color: #222222;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 22px;
@@ -80,16 +81,19 @@ main {
     border: none;
     cursor: pointer;
     display: inline-block;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.5s ease, color 0.5s ease;
 }
 
 .cta-button:hover {
-    background: #c11b8a;
+    background: #4DE9E5;
+    color: #1e1f1e;
 }
 
 .cta-button:active {
-    background: rgb(220, 220, 220); /* Fully opaque white background on click */
+    background: #7DFF92;
+    color: #222222;
 }
+
 
 /* .cta-button-inverted {
     background: linear-gradient(45deg, #FFC75F, #FF9671, #FF6F91);
