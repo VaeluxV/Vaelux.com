@@ -1,15 +1,25 @@
 <?php
-$page = trim($_SERVER['REQUEST_URI'], '/');
+$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+$allowed_pages = ['home', 'projects', 'gallery', 'about', 'contact'];
 
-if ($page == '' || $page == 'home') {
-    include 'home/index.php';
-} elseif ($page == 'about-me') {
-    include 'about-me/index.php';
-} elseif ($page == 'socials') {
-    include 'socials/index.php';
-} elseif ($page == 'privacy-policy') {
-    include 'privacy-policy/index.php';
-} else {
-    include '404.php';
+if (!in_array($page, $allowed_pages)) {
+    $page = 'home';
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaelux.com</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <?php include 'includes/header.php'; ?>
+    <div id="content">
+        <?php include "pages/$page.php"; ?>
+    </div>
+    <?php include 'includes/footer.php'; ?>
+    <script src="assets/js/transitions.js"></script>
+</body>
+</html>

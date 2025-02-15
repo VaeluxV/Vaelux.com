@@ -1,0 +1,20 @@
+/your-website/
+│── /assets/
+│   │── /css/
+│   │   ├── main.css          Global styles
+│   │   ├── transitions.css   Page transitions
+│   │── /js/
+│   │   ├── main.js           Core JavaScript
+│   │   ├── transitions.js    Handles page transitions
+│   │── /images/              Store images, including transition animations
+│── /pages/
+│   ├── home.php
+│   ├── projects.php
+│   ├── gallery.php
+│   ├── about.php
+│   ├── contact.php
+│── /includes/
+│   ├── header.php            Main header (navbar, styles, etc.)
+│   ├── footer.php            Footer (scripts, contact links, etc.)
+│── index.php                 Main entry point, loads content dynamically
+│── .htaccess                 (Optional) Clean URLs
