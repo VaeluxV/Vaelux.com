@@ -64,6 +64,7 @@ main {
     margin: 20px, 20px;
     padding-top: 132px;
     text-shadow: 3px 3px 5px #000000;
+    text-align: center;
 }
 
 .hero p {

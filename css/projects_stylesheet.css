@@ -13,6 +13,10 @@
     margin-top: 0;
 }
 
+.home-button {
+    transform: translate(12px, 12px);
+}
+
 /* Projects Section - Cards */
 .projects-container {
     display: flex;
@@ -49,6 +53,7 @@
     font-size: 22px;
     margin-bottom: 10px;
     color: #fff; /* White text for dark mode */
+    text-align: center;
 }
 
 .project-card p {
@@ -78,6 +83,7 @@
     box-shadow: 0 0 15px rgba(193, 27, 138, 0.8); /* Magenta glow effect */
     transform: translateY(-4px); /* Subtle lift on hover */
 }
+
 
 /* Responsive Design */
 @media (max-width: 1000px) {
