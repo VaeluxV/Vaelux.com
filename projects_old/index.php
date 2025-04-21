@@ -16,13 +16,13 @@
         return $_SERVER[$key] ?? $default;
     }
 
-    include server_var('DOCUMENT_ROOT', __DIR__) . '/headers/main_header.php';
+    include __DIR__ . '/../headers/main_header.php';
     ?>
 
     <!-- Pre-load images -->
     <?php
     $directory = '/images/irl_trains';
-    $images = glob($_SERVER['DOCUMENT_ROOT'] . $directory . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+    $images = glob(server_var('DOCUMENT_ROOT') . $directory . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
     foreach ($images as $image) {
         $imagePath = $directory . '/' . basename($image);
         echo '<img src="' . htmlspecialchars($imagePath) . '" style="display: none;" alt="">';
@@ -77,11 +77,11 @@
         </section>
     </main>
 
-    <?php include server_var('DOCUMENT_ROOT', __DIR__) . '/footers/main_footer.php'; ?>
+    <?php include __DIR__ . '/../footers/main_footer.php'; ?>
 
     <!-- Hero Banner Script -->
     <?php
-    $imageDirectory = $_SERVER['DOCUMENT_ROOT'] . '/images/irl_trains';
+    $imageDirectory = server_var('DOCUMENT_ROOT') . '/images/irl_trains';
     $images = array_filter(
         glob("{$imageDirectory}/*.{jpg,jpeg,png,gif}", GLOB_BRACE),
         'file_exists'

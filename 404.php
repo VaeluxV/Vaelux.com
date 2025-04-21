@@ -8,11 +8,11 @@
 </head>
 <body>
     <?php
-    function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
-        return $_SERVER[$key] ?? $default;
-    }
+    // function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
+    //     return $_SERVER[$key] ?? $default;
+    // }
 
-    include server_var('DOCUMENT_ROOT', __DIR__) . '/headers/main_header.php';
+    include __DIR__ . '/headers/main_header.php';
     ?>
 
     <main>
@@ -22,6 +22,6 @@
         </section>
     </main>
 
-    <?php include server_var('DOCUMENT_ROOT', __DIR__) . '/footers/main_footer.php'; ?>
+    <?php include __DIR__ . '/footers/main_footer.php'; ?>
 </body>
 </html>

@@ -41,10 +41,11 @@ main {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-image: "/images/irl_trains/Eurostar-PBKA.jpg";
+    /* Removed the background-image here to prevent fallback issues */
     transition: opacity 1.5s ease-in-out;
     text-align: center;
     vertical-align: middle;
+    z-index: 0;
 }
 
 /* Overlay starts transparent */
@@ -52,24 +53,81 @@ main {
     opacity: 0;
 }
 
+/* Hero video handling */
+.hero video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* behind any text content */
+    pointer-events: none;
+    display: none; /* Shown only when needed via JS */
+}
+
 /* Hero Content */
 .hero-content {
-    position: relative;
-    z-index: 1;
-    /* padding: 8% 20px; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
 }
 
 .hero-content h1 {
     font-size: 62px;
-    margin: 20px, 20px;
+    margin: -88px 20px 20px 20px;
     padding-top: 132px;
     text-shadow: 3px 3px 5px #000000;
     text-align: center;
+    pointer-events: auto;
+    z-index: 11;
 }
 
 .hero p {
     font-size: 24px;
+    pointer-events: auto;
+    z-index: 11;
+    text-shadow: 3px 3px 5px #000000;
 }
+
+.hero-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 1;
+}
+
+.hero-layer.visible {
+    opacity: 1;
+    z-index: 2;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+
+/* Buttons */
 
 .cta-button {
     background: #0b76c7;
@@ -112,6 +170,8 @@ main {
 .cta-button-inverted:active {
     background: #9c6d99; /* Fully opaque white background on click
 } */
+
+/* Other features */
 
 .h2subhead {
     padding: 0px 0px 10px 2px;
