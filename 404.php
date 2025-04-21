@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="/css/main_stylesheet.css">
 </head>
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
+    <?php
+    function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
+        return $_SERVER[$key] ?? $default;
+    }
+
+    include server_var('DOCUMENT_ROOT', __DIR__) . '/headers/main_header.php';
+    ?>
 
     <main>
         <section class="not-found">
@@ -16,6 +22,6 @@
         </section>
     </main>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/footers/main_footer.php'; ?>
+    <?php include server_var('DOCUMENT_ROOT', __DIR__) . '/footers/main_footer.php'; ?>
 </body>
 </html>

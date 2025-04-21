@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
+    <?php
+    function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
+        return $_SERVER[$key] ?? $default;
+    }
+
+    include server_var('DOCUMENT_ROOT', __DIR__) . '/headers/main_header.php';
+    ?>
 
     <main>
         <section class="socials">
@@ -30,6 +36,6 @@
         </section>
     </main>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/footers/main_footer.php'; ?>
+    <?php include server_var('DOCUMENT_ROOT', __DIR__) . '/footers/main_footer.php'; ?>
 </body>
 </html>

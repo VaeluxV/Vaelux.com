@@ -11,7 +11,13 @@
 </head>
 
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
+    <?php
+    function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
+        return $_SERVER[$key] ?? $default;
+    }
+
+    include server_var('DOCUMENT_ROOT', __DIR__) . '/headers/main_header.php';
+    ?>
 
     <!-- Pre-load images -->
     <?php
@@ -71,7 +77,7 @@
         </section>
     </main>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/footers/main_footer.php'; ?>
+    <?php include server_var('DOCUMENT_ROOT', __DIR__) . '/footers/main_footer.php'; ?>
 
     <!-- Hero Banner Script -->
     <?php
@@ -83,10 +89,12 @@
 
     echo "<script>
             const images = [";
+    
     foreach ($images as $image) {
-        $imagePath = str_replace($_SERVER['DOCUMENT_ROOT'], '', $image);
-        echo "'{$imagePath}',";
+        $imagePath = str_replace(server_var('DOCUMENT_ROOT'), '', $image);
+        echo json_encode($imagePath) . ',';
     }
+    
     echo "];
             const heroSection = document.getElementById('hero-section');
             const heroOverlay = document.getElementById('hero-overlay');

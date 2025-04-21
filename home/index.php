@@ -10,15 +10,22 @@
 </head>
 
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
+    <?php
+    function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
+        return $_SERVER[$key] ?? $default;
+    }
+
+    include server_var('DOCUMENT_ROOT', __DIR__) . '/headers/main_header.php';
+    ?>
 
     <!-- Pre-load images -->
     <?php
     // Directory path for the images
     $directory = '/images/irl_trains';
 
+
     // Get all image files in the directory
-    $images = glob($_SERVER['DOCUMENT_ROOT'] . $directory . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+    $images = glob(server_var('DOCUMENT_ROOT') . $directory . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
 
     foreach ($images as $image) {
         // Generate a hidden <img> tag for each image
@@ -54,11 +61,11 @@
         </section>
     </main>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/footers/main_footer.php'; ?>
+    <?php include server_var('DOCUMENT_ROOT', __DIR__) . '/footers/main_footer.php'; ?>
 
     <?php
     // PHP to scan the directory and create an array of valid image paths
-    $imageDirectory = $_SERVER['DOCUMENT_ROOT'] . '/images/irl_trains';
+    $imageDirectory = server_var('DOCUMENT_ROOT') . '/images/irl_trains';
     $images = array_filter(
         glob("{$imageDirectory}/*.{jpg,jpeg,png,gif}", GLOB_BRACE),
         'file_exists'
@@ -67,10 +74,12 @@
     // Convert PHP array to a JavaScript array
     echo "<script>
             const images = [";
+
     foreach ($images as $image) {
-        $imagePath = str_replace($_SERVER['DOCUMENT_ROOT'], '', $image);
-        echo "'{$imagePath}',";
+        $imagePath = str_replace(server_var('DOCUMENT_ROOT'), '', $image);
+        echo json_encode($imagePath) . ',';
     }
+
     echo "];
 
             // Set the initial background image for hero-section
