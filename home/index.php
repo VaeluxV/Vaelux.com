@@ -44,24 +44,6 @@ foreach ($mediaFiles as $file) {
             <video class="hero-video" muted playsinline loop></video>
         </div>
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        <section class="features">
-            <div class="feature">
-                <h2 class="h2subhead">Website WIP</h2>
-                <p>The website is still a work in progress.</p>
-                <br>
-                <h2 class="h2subhead">Photo gallery</h2>
-                <a href="/gallery" class="cta-button">To the full photo gallery</a>
-            </div>
-        </section>
-        <section class="subsection">
-            <div class="subsectiontext">
-                <h2>Check back soon!</h2>
-            </div>
-        </section>
-    </main>
-=======
         <div class="hero-content">
             <h1>Welcome!</h1>
             <p></p>
@@ -73,15 +55,6 @@ foreach ($mediaFiles as $file) {
             <a href="/about-me" class="cta-button">More info about me</a>
         </div>
     </section>
->>>>>>> Stashed changes
-=======
-        <div class="hero-content">
-            <h1>Welcome!</h1>
-            <p></p>
-            <a href="/about-me" class="cta-button">More info about me</a>
-        </div>
-    </section>
->>>>>>> Projects-Redesign
 
     <section class="features">
         <div class="feature">

@@ -3,7 +3,7 @@
     <nav>
         <ul>
             <li><a href="mailto:inquiries.vaelux@outlook.com">Contact</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="/privacy-policy">FAQ</a></li>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
         </ul>
         <ul>
