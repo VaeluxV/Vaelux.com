@@ -38,6 +38,7 @@
             </div>
         </section>
 
+<<<<<<< Updated upstream
         <section class="features">
             <div class="feature">
                 <h2 class="h2subhead">Website WIP</h2>
@@ -53,6 +54,19 @@
             </div>
         </section>
     </main>
+=======
+        <div class="hero-content">
+            <h1>Welcome!</h1>
+            <p></p>
+            <p>I am aware of the issue with the banner being really buggy for chrome users</p>
+            <br>
+            <p>It is currently known to happen on all chromium based browsers. I am working on fixing this.</p>
+            <br>
+            <p> </p>
+            <a href="/about-me" class="cta-button">More info about me</a>
+        </div>
+    </section>
+>>>>>>> Stashed changes
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/footers/main_footer.php'; ?>
 
