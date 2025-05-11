@@ -7,10 +7,10 @@
 
 html, body {
     height: 100%;
-    margin: 0;
     font-family: Arial, sans-serif;
     color: #f3e0eb;
-    background-color: #222222;
+    background-color: #292224;
+    margin: 0;
 }
 
 body {
@@ -26,13 +26,18 @@ main {
 .hero-container {
     position: relative;
     width: 100%;
-    height: 400px; /* Set to the desired height of the hero section */
+    height: 420px;
     overflow: hidden;
-    color: white;
     text-align: center;
+    color: white;
 }
 
-/* Hero background layers */
+@media (max-width: 768px) {
+    .hero-container {
+        height: 220px;
+    }
+}
+
 .hero {
     position: absolute;
     top: 0;
@@ -41,32 +46,15 @@ main {
     height: 100%;
     background-size: cover;
     background-position: center;
-    /* Removed the background-image here to prevent fallback issues */
     transition: opacity 1.5s ease-in-out;
     text-align: center;
-    vertical-align: middle;
     z-index: 0;
 }
 
-/* Overlay starts transparent */
 #hero-overlay {
     opacity: 0;
 }
 
-/* Hero video handling */
-.hero video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1; /* behind any text content */
-    pointer-events: none;
-    display: none; /* Shown only when needed via JS */
-}
-
-/* Hero Content */
 .hero-content {
     position: absolute;
     top: 0;
@@ -83,12 +71,17 @@ main {
 
 .hero-content h1 {
     font-size: 62px;
-    margin: -88px 20px 20px 20px;
+    margin: -96px 20px 20px 20px;
     padding-top: 132px;
     text-shadow: 3px 3px 5px #000000;
-    text-align: center;
     pointer-events: auto;
     z-index: 11;
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 42px;
+    }
 }
 
 .hero p {
@@ -116,21 +109,9 @@ main {
     z-index: 2;
 }
 
-.hero-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-}
-
-
 /* Buttons */
-
 .cta-button {
-    background: #0b76c7;
+    background: #b50c33;
     color: #e0e7f3;
     padding: 10px 20px;
     text-decoration: none;
@@ -143,36 +124,14 @@ main {
 }
 
 .cta-button:hover {
-    background: #c11b8a;
+    background: #c9085c;
 }
 
 .cta-button:active {
-    background: rgb(220, 220, 220); /* Fully opaque white background on click */
+    background: rgb(220, 220, 220);
 }
-
-/* .cta-button-inverted {
-    background: linear-gradient(45deg, #FFC75F, #FF9671, #FF6F91);
-    color: #1C1C1C;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    transition: background 0.3s ease;
-}
-
-.cta-button-inverted:hover {
-    background: linear-gradient(45deg, #FF6F91, #FF9671, #FFC75F);
-}
-
-.cta-button-inverted:active {
-    background: #9c6d99; /* Fully opaque white background on click
-} */
 
 /* Other features */
-
 .h2subhead {
     padding: 0px 0px 10px 2px;
 }
@@ -181,12 +140,25 @@ main {
     display: flex;
     justify-content: space-around;
     padding: 40px 20px;
+    flex-wrap: wrap;
 }
 
 .feature {
     flex: 1;
     text-align: center;
     padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        width: 100%;
+        max-width: 600px;
+    }
 }
 
 .feature h2 {
@@ -208,4 +180,3 @@ main {
 .subsectiontext h2 {
     font-size: 24px;
 }
-

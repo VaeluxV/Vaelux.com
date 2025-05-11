@@ -8,6 +8,7 @@
             <li><a href="/about-me">About Me</a></li>
             <li><a href="/projects">My Projects</a></li>
             <li><a href="/media-library">Media Library</a></li>
+            <!-- <li><a href="/media-library">Media Library</a></li> -->
             <!--<li><a href="/train-sim-project">My Train Simulator Cab Project</a></li>
             <li><a href="/projects">My Projects</a></li>-->
         </ul>

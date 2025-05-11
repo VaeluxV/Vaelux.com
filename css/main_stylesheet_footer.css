@@ -1,5 +1,5 @@
 footer {
-    background: #1e1e1e;
+    background: #0000002b;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -29,5 +29,5 @@ footer nav ul li a {
 }
 
 footer nav ul li a:hover {
-    color: #c11b8a;
+    color: #c9085c;
 }

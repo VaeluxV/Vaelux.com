@@ -65,7 +65,7 @@ h1 {
     right: 310px;
     width: 40px;
     height: 40px;
-    background-color: #0b76c7;
+    background-color: #b50c33;
     border: none;
     border-radius: 50%;
     color: #fff;
@@ -82,7 +82,7 @@ h1 {
 }
 
 .sidebar-toggle:hover {
-    background-color: #c11b8a;
+    background-color: #c9085c;
 }
 
 /* Filters */
@@ -91,7 +91,7 @@ h1 {
     width: 100%;
     padding: 10px 20px;
     margin-bottom: 10px;
-    background-color: #0b76c7;
+    background-color: #b50c33;
     color: #e0e7f3;
     border: none;
     border-radius: 22px;
@@ -102,7 +102,7 @@ h1 {
 }
 
 .tag-filter:hover {
-    background-color: #c11b8a;
+    background-color: #c9085c;
     color: #fff;
 }
 
@@ -111,7 +111,7 @@ h1 {
     width: 100%;
     padding: 10px 20px;
     margin-bottom: 10px;
-    background-color: #0b76c7;
+    background-color: #b50c33;
     color: #e0e7f3;
     border: none;
     border-radius: 22px;
@@ -131,7 +131,7 @@ h1 {
     width: 100%;
     padding: 10px 20px;
     margin-bottom: 10px;
-    background-color: #0b76c7;
+    background-color: #b50c33;
     color: #e0e7f3;
     border: none;
     border-radius: 22px;
@@ -180,8 +180,8 @@ h1 {
 }
 
 .media-card:hover {
-    border-color: #c11b8a; /* Border changes to magenta color upon hover */
-    box-shadow: 0 0 15px rgba(193, 27, 138, 0.8); /* Magenta glow effect */
+    border-color: #c9085c; /* Border changes to magenta color upon hover */
+    box-shadow: 0 0 15px rgba(193, 27, 102, 0.8); /* Magenta glow effect */
     transform: translateY(-4px); /* Subtle lift on hover */
 }
 

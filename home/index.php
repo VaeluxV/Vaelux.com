@@ -20,7 +20,7 @@ include __DIR__ . '/../headers/main_header.php';
 
 <!-- Preload media -->
 <?php
-$directory = '/images/irl_trains';
+$directory = '/images/hero_imgs';
 $mediaFiles = glob(server_var('DOCUMENT_ROOT') . $directory . '/*.{jpg,jpeg,png,gif,mp4,webm}', GLOB_BRACE);
 sort($mediaFiles);
 
@@ -47,12 +47,6 @@ foreach ($mediaFiles as $file) {
         <div class="hero-content">
             <h1>Welcome!</h1>
             <p></p>
-            <p>I am aware of the issue with the banner being really buggy for chrome users</p>
-            <br>
-            <p>It is currently known to happen on all chromium based browsers. I am working on fixing this.</p>
-            <br>
-            <p> </p>
-            <a href="/about-me" class="cta-button">More info about me</a>
         </div>
     </section>
 
@@ -63,6 +57,12 @@ foreach ($mediaFiles as $file) {
             <br>
             <h2 class="h2subhead">Photo gallery</h2>
             <a href="/gallery" class="cta-button">To the full photo gallery</a>
+        </div>
+        <div class="feature">
+            <h2 class="h2subhead">About me</h2>
+            <p>More info about me and my projects.</p>
+            <br>
+            <a href="/about-me" class="cta-button">More info about me</a>
         </div>
     </section>
 
@@ -92,55 +92,6 @@ echo "];
 ?>
 
 <!-- Hero media transition logic -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    let index = 0;
-    let currentLayer = 'A';
-    const delayBetween = 10000;
-    const getLayer = id => document.getElementById(`layer${id}`);
-    const getVideo = id => getLayer(id).querySelector('video');
-
-    function showMedia(mediaItem, targetLayer, callback) {
-        const layer = getLayer(targetLayer);
-        const video = getVideo(targetLayer);
-        const isVideo = mediaItem.type === 'video';
-
-        if (isVideo) {
-            video.src = mediaItem.path;
-            video.style.display = 'block';
-            video.load();
-            video.oncanplay = () => {
-                video.play();
-                layer.style.backgroundImage = '';
-                callback();
-            };
-        } else {
-            video.pause();
-            video.style.display = 'none';
-            video.src = '';
-            layer.style.backgroundImage = `url('${mediaItem.path}')`;
-            callback();
-        }
-    }
-
-    function transitionToNext() {
-        const nextLayer = currentLayer === 'A' ? 'B' : 'A';
-        const current = getLayer(currentLayer);
-        const next = getLayer(nextLayer);
-
-        const mediaItem = media[index];
-        index = (index + 1) % media.length;
-
-        showMedia(mediaItem, nextLayer, () => {
-            next.classList.add('visible');
-            current.classList.remove('visible');
-            currentLayer = nextLayer;
-            setTimeout(transitionToNext, delayBetween);
-        });
-    }
-
-    transitionToNext();
-});
-</script>
+<script src="/js/hero_media.js"></script>
 </body>
 </html>

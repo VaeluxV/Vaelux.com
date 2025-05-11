@@ -31,7 +31,7 @@
     color: #f3e0eb;
     border: 2px solid transparent;
     border-radius: 50px; /* Fully rounded corners */
-    background: linear-gradient(45deg, #0b76c7, #c11b8a);
+    background: linear-gradient(45deg, #c9085c, #b50c33);
     transition: background 0.3s ease, border-color 0.3s ease;
     border-color: #1c1c1c;
     border-width: 3px;
@@ -43,7 +43,7 @@
 }
 
 .social-button:hover {
-    background: linear-gradient(45deg, #0963a8, #a41775);
+    background: linear-gradient(45deg, #dc0763, #c50b37);
     border-color: #f3e0eb;
 }
 
