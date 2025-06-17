@@ -1,47 +1,59 @@
-/* Hero Section - Title and Subtitle Shadow */
-.hero-content h1 {
-    font-size: 48px;
+/* Make sure the body doesn't cut off content */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    padding-bottom: 140px; /* Enough space for footer */
+    margin-top: 80px; /* Adjust based on your fixed header height */
+    box-sizing: border-box;
+}
+
+/* Page title section (replacing hero-content) */
+.projects-title {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: -60px;
+}
+
+.projects-title h1 {
+    font-size: 32px;
     color: #fff;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-.hero-content p {
-    font-size: 20px;
-    color: #ddd;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Matches the shadow of the title */
-    margin-top: 0;
-}
-
-.home-button {
-    transform: translate(12px, 12px);
-}
-
-/* Projects Section - Cards */
+/* Project Cards Layout */
 .projects-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 40px;
+    padding-bottom: 60px;
 }
 
 .project-card {
-    flex: 1 1 calc(33.333% - 40px); /* Three per row on desktop */
-    background: #222; /* Dark background for dark mode */
-    border: 2px solid #444; /* Subtle initial border */
+    flex: 1 1 calc(33.333% - 40px);
+    max-width: 600px;
+    min-width: 280px;
+    background: #222;
+    border: 2px solid #444;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Initial shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    max-width: 400px;
 }
 
 .project-card img {
     width: 100%;
-    height: 200px;
-    object-fit: cover; /* Ensures no stretching or dead space */
+    height: 20% + 580px;
+    object-fit: cover;
     border-bottom: 2px solid #444;
 }
 
@@ -51,50 +63,61 @@
 
 .project-card h3 {
     font-size: 22px;
+    color: #fff;
     margin-bottom: 10px;
-    color: #fff; /* White text for dark mode */
-    text-align: center;
 }
 
 .project-card p {
     font-size: 16px;
-    color: #aaa; /* Subtle gray for less emphasis */
+    color: #aaa;
     margin-bottom: 20px;
 }
 
-.project-card .cta-button {
+/* .project-card .cta-button {
     background: #0b76c7;
     color: white;
     padding: 10px 20px;
-    border-radius: 50px; /* Fully rounded edges */
+    border-radius: 50px;
     text-decoration: none;
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .project-card .cta-button:hover {
     background: #c11b8a;
-    /* transform: scale(1.05); */
-}
+} */
 
-/* Hover Effect for Project Cards */
 .project-card:hover {
-    background: #222; /* Ensure background remains consistent */
-    border-color: #c11b8a; /* Border changes to magenta color upon hover */
-    box-shadow: 0 0 15px rgba(193, 27, 138, 0.8); /* Magenta glow effect */
+    border-color: #c9085c; /* Border changes to magenta color upon hover */
+    box-shadow: 0 0 15px rgba(193, 27, 102, 0.8); /* Magenta glow effect */
     transform: translateY(-4px); /* Subtle lift on hover */
 }
 
+.aspect-ratio-16-9 {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio = 9/16 = 0.5625 = 56.25% */
+    overflow: hidden;
+    background-color: #222;
+}
 
-/* Responsive Design */
+.aspect-ratio-16-9 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Tweaks */
 @media (max-width: 1000px) {
     .project-card {
-        flex: 1 1 calc(50% - 40px); /* Two per row */
+        flex: 1 1 calc(50% - 40px);
     }
 }
 
 @media (max-width: 768px) {
     .project-card {
-        flex: 1 1 100%; /* One per row */
-        max-width: 100%;
+        flex: 1 1 100%;
     }
 }

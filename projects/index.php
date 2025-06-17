@@ -1,3 +1,8 @@
+<?php
+$projectsPath = __DIR__ . '/project';
+$folders = glob($projectsPath . '/*', GLOB_ONLYDIR);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,28 +16,51 @@
 </head>
 
 <body>
-    
-<?php include __DIR__ . '/../headers/main_header.php'; ?>
-    <main>
-        <div class="hero-content">
-            <!-- <div class="home-button" id="home-button-offset">
-                <a href="/home" class="cta-button">Home</a>
-            </div> -->
 
-            
-            
-            <h1>Projects page WIP</h1>
-            
+    <?php include __DIR__ . '/../headers/main_header.php'; ?>
+
+    <main>
+        <section class="projects-title">
+            <h1>All of my projects</h1>
+        </section>
+
+        <div class="projects-container">
+            <?php foreach ($folders as $folder): ?>
+                <?php
+                $infoPath = $folder . '/info.json';
+                if (!file_exists($infoPath)) continue;
+
+                $info = json_decode(file_get_contents($infoPath), true);
+                if (!$info) continue;
+
+                $title = $info['title'] ?? 'Untitled Project';
+                $desc = $info['description'] ?? 'No description available.';
+                $image = $info['image'] ?? null;
+                $link  = $info['link'] ?? '#';
+
+                $imagePath = $image
+                    ? '/projects/project/' . basename($folder) . '/' . $image
+                    : '/projects/placeholder.jpg';
+
+                $linkPath = '/projects/project/' . basename($folder) . '/' . $link;
+                ?>
+                <div class="project-card">
+                    <div class="aspect-ratio-16-9">
+                        <img src="<?= htmlspecialchars($imagePath) ?>" alt="<?= htmlspecialchars($title) ?>">
+                    </div>
+                    <div class="project-card-content">
+                        <h3><?= htmlspecialchars($title) ?></h3>
+                        <p><?= htmlspecialchars($desc) ?></p>
+                        <a href="<?= htmlspecialchars($linkPath) ?>" class="cta-button">View Project</a>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
         </div>
+
     </main>
 
-    <?php
-    // function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
-    //     return $_SERVER[$key] ?? $default;
-    // }
-
-    include __DIR__ . '/../footers/main_footer.php';
-    ?>
+    <?php include __DIR__ . '/../footers/main_footer.php'; ?>
 
 </body>
 
