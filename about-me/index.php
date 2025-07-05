@@ -28,7 +28,16 @@
                 <img src="/images/profiles/Eurostar-PBKA-square.jpg" alt="Placeholder Photo" class="about-me-photo">
                 <h2>Vaelux</h2>
                 <p>Hi, I'm Valerie, also known as "Vaelux" online!</p>
-                <p>I am a 20 year old student of IoT @Thomas More</p>
+                <p>I am 20 years old, and have a wide range of hobbies.</p>
+                <p>These hobbies include:</p>
+                <ul>
+                    <li>3D printing</li>
+                    <li>Electronics</li>
+                    <li>Gaming</li>
+                    <li>Programming</li>
+                    <li>Trains & model railroading</li>
+                </ul>
+                <p>And many more..</p>
             </section>
 
             <section class="socials">

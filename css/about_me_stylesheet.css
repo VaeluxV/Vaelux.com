@@ -49,3 +49,16 @@
         text-align: center; /* Ensure text stays centered */
     }
 }
+
+.about-me ul {
+    list-style-position: inside; /* Keeps bullets aligned with text */
+    padding-left: 0;
+    text-align: center; /* Align text like surrounding content */
+    margin: 0px 0;
+    font-size: 18px; /* Match paragraph font size */
+    line-height: 1.6; /*Match line spacing */
+}
+
+.about-me li {
+    margin-bottom: 8px; /* Optional: space between items */
+}
