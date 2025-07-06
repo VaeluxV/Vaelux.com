@@ -249,35 +249,49 @@ document.addEventListener("DOMContentLoaded", () => {
                 const mediaCard = document.createElement("div");
                 mediaCard.classList.add("media-card");
                 
-                // Sanitize all user data
                 const type = item.type && typeof item.type === 'string' ? item.type : 'unknown';
                 const tags = Array.isArray(item.tags) ? item.tags.join(" ") : "";
-                const title = sanitizeHTML(item.title && typeof item.title === 'string' ? item.title : 'Untitled');
+                const title = item.title && typeof item.title === 'string' ? item.title : 'Untitled';
                 const descriptionRaw = item.description && typeof item.description === 'string' ? item.description : '';
-                const description = sanitizeHTML(descriptionRaw).replace(/\n/g, '<br>');
                 const src = sanitizeURL(item.src && typeof item.src === 'string' ? item.src : '');
                 
                 mediaCard.setAttribute("data-type", type);
                 mediaCard.setAttribute("data-tags", tags);
                 
+                // Title
+                const h3 = document.createElement('h3');
+                h3.textContent = title;
+                // Description (preserve line breaks)
+                const p = document.createElement('p');
+                const descLines = descriptionRaw.split(/\n/);
+                descLines.forEach((line, idx) => {
+                    p.appendChild(document.createTextNode(line));
+                    if (idx < descLines.length - 1) p.appendChild(document.createElement('br'));
+                });
                 if (type === "image") {
-                    mediaCard.innerHTML = `
-                        <img src="${src}" alt="${title}" loading="lazy">
-                        <h3>${title}</h3>
-                        <p>${description}</p>
-                    `;
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = title;
+                    img.loading = "lazy";
+                    mediaCard.appendChild(img);
+                    mediaCard.appendChild(h3);
+                    mediaCard.appendChild(p);
                 } else if (type === "video") {
-                    mediaCard.innerHTML = `
-                        <iframe src="${src}" frameborder="0" allowfullscreen loading="lazy"></iframe>
-                        <h3>${title}</h3>
-                        <p>${description}</p>
-                    `;
+                    const iframe = document.createElement('iframe');
+                    iframe.src = src;
+                    iframe.frameBorder = "0";
+                    iframe.allowFullscreen = true;
+                    iframe.loading = "lazy";
+                    mediaCard.appendChild(iframe);
+                    mediaCard.appendChild(h3);
+                    mediaCard.appendChild(p);
                 } else {
-                    mediaCard.innerHTML = `
-                        <div class="media-placeholder">${sanitizeHTML(type.toUpperCase())}</div>
-                        <h3>${title}</h3>
-                        <p>${description}</p>
-                    `;
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'media-placeholder';
+                    placeholder.textContent = type.toUpperCase();
+                    mediaCard.appendChild(placeholder);
+                    mediaCard.appendChild(h3);
+                    mediaCard.appendChild(p);
                 }
                 mediaGrid.appendChild(mediaCard);
                 fadeInCard(mediaCard);
@@ -349,16 +363,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Sanitize suggestions before rendering
-            searchSuggestions.innerHTML = suggestions.map(tag => {
-                const sanitizedTag = sanitizeHTML(tag);
-                return `<div class="suggestion-item" data-tag="${sanitizedTag}">${sanitizedTag}</div>`;
-            }).join("");
-
-            // Add click handlers to suggestions
-            searchSuggestions.querySelectorAll(".suggestion-item").forEach(item => {
-                item.addEventListener("click", () => {
-                    const tag = item.getAttribute("data-tag");
+            // Clear previous suggestions
+            searchSuggestions.innerHTML = '';
+            suggestions.forEach(tag => {
+                const item = document.createElement('div');
+                item.className = 'suggestion-item';
+                item.setAttribute('data-tag', tag);
+                item.textContent = tag;
+                item.addEventListener('click', () => {
                     if (tag && !selectedTags.has(tag)) {
                         selectedTags.add(tag);
                         applyFilters();
@@ -366,8 +378,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     searchInput.value = "";
                     hideSearchSuggestions();
                 });
+                searchSuggestions.appendChild(item);
             });
-
             searchSuggestions.style.display = "block";
         }
 
