@@ -198,14 +198,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 10);
     }
 
-    // Comprehensive input sanitization function
-    function sanitizeHTML(str) {
-        if (typeof str !== 'string') return '';
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-
     // Validate and sanitize URLs
     function sanitizeURL(url) {
         if (typeof url !== 'string') return '';
