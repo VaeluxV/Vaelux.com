@@ -16,40 +16,12 @@ function server_var(string $key, $default = '') {
 }
 
 include __DIR__ . '/../headers/main_header.php';
-?>
 
-<!-- Preload media -->
-<?php
-$directory = '/images/hero_imgs';
-$mediaFiles = glob(server_var('DOCUMENT_ROOT') . $directory . '/*.{jpg,jpeg,png,gif,mp4,webm}', GLOB_BRACE);
-sort($mediaFiles);
-
-foreach ($mediaFiles as $file) {
-    $filePath = $directory . '/' . basename($file);
-    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-    if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
-        echo '<img src="' . htmlspecialchars($filePath) . '" style="display: none;" alt="">';
-    } elseif (in_array($ext, ['mp4', 'webm'])) {
-        echo '<link rel="preload" as="video" href="' . htmlspecialchars($filePath) . '" type="video/' . $ext . '">';
-    }
-}
+$json_path = '/images/hero-banner/hero_banner_home.json';
 ?>
 
 <main>
-    <section class="hero-container">
-        <div class="hero hero-layer visible" id="layerA">
-            <video class="hero-video" muted playsinline loop></video>
-        </div>
-        <div class="hero hero-layer" id="layerB">
-            <video class="hero-video" muted playsinline loop></video>
-        </div>
-
-        <div class="hero-content">
-            <h1>Welcome!</h1>
-            <p></p>
-        </div>
-    </section>
-
+    <?php include __DIR__ . '/../components/hero_banner.php'; ?>
     <section class="features">
         <div class="feature">
             <h2 class="h2subhead">Website WIP</h2>
@@ -75,23 +47,7 @@ foreach ($mediaFiles as $file) {
 
 <?php include __DIR__ . '/../footers/main_footer.php'; ?>
 
-<!-- Inject media list from PHP -->
-<?php
-echo "<script>
-const media = [";
-foreach ($mediaFiles as $file) {
-    $mediaPath = str_replace(server_var('DOCUMENT_ROOT'), '', $file);
-    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-    echo json_encode([
-        'path' => $mediaPath,
-        'type' => in_array($ext, ['mp4', 'webm']) ? 'video' : 'image'
-    ]) . ',';
-}
-echo "];
-</script>";
-?>
-
 <!-- Hero media transition logic -->
-<script src="/js/hero_media.js"></script>
+<script src="/js/hero_banner.js"></script>
 </body>
 </html>

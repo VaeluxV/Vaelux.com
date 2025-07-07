@@ -3,3 +3,5 @@ htdocs.code-workspace
 /images/media-library
 /images/photo_library/thumbnails
 /images/photo_library/other
+/images/profiles
+*.mp4

@@ -1,0 +1,112 @@
+[
+  {
+    "type": "image",
+    "src": "/images/hero-banner/NMBS-SNCB-TRAXX-E186-205.jpg",
+    "title": "Welcome!",
+    "subtitle": "I am Vaelux. On this site you can read about, look at, and learn about trains, tech and more!",
+    "buttons": [
+      { "text": "Browse Media Library", "link": "/media-library" },
+      { "text": "More about me", "link": "/about-me" }
+    ]
+  },
+  {
+    "type": "image",
+    "src": "/images/hero-banner/Eurostar-PBKA-4341.jpg",
+    "title": "Photo Gallery",
+    "subtitle": "Browse train photography from across Europe.",
+    "buttons": [
+      { "text": "View Media Library", "link": "/media-library" }
+    ]
+  },
+  {
+    "type": "video",
+    "src": "/images/hero-banner/Eurostar-E320-4030.mp4",
+    "title": "Discover My Projects",
+    "subtitle": "From train simulator cabs to SlimeVR full-body tracking enclosures.",
+    "buttons": [
+      { "text": "My Projects", "link": "/projects" }
+    ]
+  },
+  {
+    "type": "video",
+    "src": "/images/hero-banner/NS-ICNG-3311.mp4",
+    "title": "Watch Train Content",
+    "subtitle": "Enjoy high-quality train videos and pictures.",
+    "buttons": [
+      { "text": "Find Videos and Pictures", "link": "/media-library" }
+    ]
+  },
+  {
+    "type": "image",
+    "src": "/images/hero-banner/ICNG-B_3311.jpg",
+    "title": "Get in Touch",
+    "subtitle": "Connect on social media or send a message.",
+    "buttons": [
+      { "text": "Socials", "link": "/about-me" }
+    ]
+  },
+  {
+    "type": "image",
+    "src": "/images/hero-banner/NMBS-SNCB-TRAXX-E186-207.jpg",
+    "title": "",
+    "subtitle": "",
+    "buttons": [
+    ]
+  },
+  {
+    "type": "image",
+    "src": "/images/hero-banner/NMBS-SNCB-HLE18-M6-1860.jpg",
+    "title": "",
+    "subtitle": "",
+    "buttons": [
+    ]
+  },
+  {
+    "type": "image",
+    "src": "/images/hero-banner/Dispolok_ES_64_U2-042.jpg",
+    "title": "",
+    "subtitle": "",
+    "buttons": [
+    ]
+  },
+  {
+    "type": "video",
+    "src": "/images/hero-banner/NMBS-HLE19-1922.mp4",
+    "title": "",
+    "subtitle": "",
+    "buttons": [
+    ]
+  },
+  {
+    "type": "video",
+    "src": "/images/hero-banner/Eurostar-E320-4017.mp4",
+    "title": "",
+    "subtitle": "",
+    "buttons": [
+    ]
+  },
+  {
+    "type": "video",
+    "src": "/images/hero-banner/NS-ICNG-3318.mp4",
+    "title": "",
+    "subtitle": "",
+    "buttons": [
+    ]
+  },
+  {
+    "type": "image",
+    "src": "/images/hero-banner/HLE18-M6_1875.jpg",
+    "title": "",
+    "subtitle": "",
+    "buttons": [
+    ]
+  },
+  {
+    "type": "image",
+    "src": "/images/hero-banner/NS-TRAXX-E186-011.jpg",
+    "title": "",
+    "subtitle": "",
+    "buttons": [
+    ]
+  }
+] 
