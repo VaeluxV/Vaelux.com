@@ -47,8 +47,8 @@
                             class="fab fa-github"></i> GitHub</a>
                     <a href="https://discord.gg/XfJevQemgx" target="_blank" class="social-button"><i
                             class="fab fa-discord"></i> Discord</a>
-                    <a href="https://www.instagram.com/vaelux_/" target="_blank" class="social-button"><i
-                            class="fab fa-instagram"></i> Instagram</a>
+                    <!-- <a href="https://www.instagram.com/vaelux_/" target="_blank" class="social-button"><i
+                            class="fab fa-instagram"></i> Instagram</a> -->
                     <a href="https://www.twitch.tv/vaelux_v" target="_blank" class="social-button"><i
                             class="fab fa-twitch"></i> Twitch</a>
                     <a href="https://www.youtube.com/@Vaelux_" target="_blank" class="social-button"><i
