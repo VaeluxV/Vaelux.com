@@ -11,7 +11,7 @@
 
 <body>
     <?php
-    require_once __DIR__ . '/../../../utils.php';
+    include_once __DIR__ . '/../../../utils.php';
     include __DIR__ . '/../../../headers/main_header.php';
     ?>
 
