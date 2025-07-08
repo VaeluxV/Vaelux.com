@@ -10,22 +10,7 @@
 </head>
 <body>
     <?php
-    // Safe function to get server variables with validation
-    function get_server_var(string $key, $default = '') {
-        return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
-    }
-
-    // Safe function to escape output
-    function e($string) {
-        return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
-    }
-
-    // Validate document root
-    $document_root = get_server_var('DOCUMENT_ROOT');
-    if (empty($document_root) || !is_dir($document_root)) {
-        die('Invalid server configuration');
-    }
-
+    require_once __DIR__ . '/../utils.php';
     include __DIR__ . '/../headers/main_header.php';
     ?>
 

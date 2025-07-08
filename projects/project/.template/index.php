@@ -11,13 +11,7 @@
 
 <body>
     <?php
-    // Safe function to get server variables with validation
-    if (!function_exists('get_server_var')) {
-        function get_server_var(string $key, $default = '') {
-            return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
-        }
-    }
-
+    require_once __DIR__ . '/../../../utils.php';
     include __DIR__ . '/../../../headers/main_header.php';
     ?>
 

@@ -1,23 +1,5 @@
 <?php
-// Safe function to get server variables with validation
-function get_server_var(string $key, $default = '') {
-    return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
-}
-
-// Safe function to validate and sanitize file paths
-function validate_file_path($path) {
-    // Remove any null bytes and normalize path
-    $path = str_replace(chr(0), '', $path);
-    $path = realpath($path);
-    
-    // Ensure path is within document root
-    $document_root = get_server_var('DOCUMENT_ROOT');
-    if (empty($document_root)) {
-        return false;
-    }
-    
-    return $path && strpos($path, $document_root) === 0;
-}
+require_once __DIR__ . '/../utils.php';
 
 function createThumbnail($src, $dest, $width, $height, $quality = 40) {
     // Validate input file path
