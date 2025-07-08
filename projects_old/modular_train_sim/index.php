@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/main_stylesheet.css">
 </head>
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/headers/main_header.php'; ?>
+    <?php include __DIR__ . '/../../headers/main_header.php'; ?>
 
     <main>
         <section class="hero" style="background: url('/images/irl_trains/HLE18-M6_1849.jpg') no-repeat center center/cover;">
@@ -36,6 +36,6 @@
         
     </main>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/footers/main_footer.php'; ?>
+    <?php include __DIR__ . '/../../footers/main_footer.php'; ?>
 </body>
 </html>

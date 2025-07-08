@@ -1,6 +1,46 @@
 <?php
+// Safe function to get server variables with validation
+function get_server_var(string $key, $default = '') {
+    return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
+}
+
+// Safe function to validate and sanitize file paths
+function validate_file_path($path) {
+    // Remove any null bytes and normalize path
+    $path = str_replace(chr(0), '', $path);
+    $path = realpath($path);
+    
+    // Ensure path is within document root
+    $document_root = get_server_var('DOCUMENT_ROOT');
+    if (empty($document_root)) {
+        return false;
+    }
+    
+    return $path && strpos($path, $document_root) === 0;
+}
+
 function createThumbnail($src, $dest, $width, $height, $quality = 40) {
-    list($orig_width, $orig_height, $type) = getimagesize($src);
+    // Validate input file path
+    if (!validate_file_path($src)) {
+        return false;
+    }
+    
+    // Validate destination path
+    if (!validate_file_path(dirname($dest))) {
+        return false;
+    }
+    
+    // Check if source file exists and is readable
+    if (!is_readable($src)) {
+        return false;
+    }
+    
+    $image_info = getimagesize($src);
+    if ($image_info === false) {
+        return false;
+    }
+    
+    list($orig_width, $orig_height, $type) = $image_info;
     $image = null;
     
     switch ($type) {
@@ -15,6 +55,10 @@ function createThumbnail($src, $dest, $width, $height, $quality = 40) {
             break;
         default:
             return false;
+    }
+    
+    if (!$image) {
+        return false;
     }
 
     // Calculate aspect ratios
@@ -37,39 +81,68 @@ function createThumbnail($src, $dest, $width, $height, $quality = 40) {
 
     // Create a new true color image
     $thumb = imagecreatetruecolor($width, $height);
+    if (!$thumb) {
+        imagedestroy($image);
+        return false;
+    }
 
     // Resize and crop image
     $resized_image = imagecreatetruecolor($new_width, $new_height);
+    if (!$resized_image) {
+        imagedestroy($image);
+        imagedestroy($thumb);
+        return false;
+    }
+    
     imagecopyresampled($resized_image, $image, 0, 0, 0, 0, $new_width, $new_height, $orig_width, $orig_height);
     imagecopy($thumb, $resized_image, 0, 0, $crop_x, $crop_y, $width, $height);
 
     // Save thumbnail as JPG with specified quality
-    imagejpeg($thumb, $dest, $quality);
+    $result = imagejpeg($thumb, $dest, $quality);
     
     imagedestroy($image);
     imagedestroy($thumb);
     imagedestroy($resized_image);
 
-    return true;
+    return $result;
 }
 
-// Set directories
-$dir = $_SERVER['DOCUMENT_ROOT'] . '/images/photo_library/';
-$thumbDir = $_SERVER['DOCUMENT_ROOT'] . '/images/photo_library/thumbnails/';
+// Set directories with validation
+$document_root = get_server_var('DOCUMENT_ROOT');
+if (empty($document_root) || !is_dir($document_root)) {
+    die('Invalid server configuration');
+}
+
+$dir = $document_root . '/images/photo_library/';
+$thumbDir = $document_root . '/images/photo_library/thumbnails/';
+
+// Validate directories are within document root
+if (!validate_file_path($dir) || !validate_file_path($thumbDir)) {
+    die('Invalid directory configuration');
+}
 
 // Create thumbnails directory if they do not exist
-if (!file_exists($thumbDir)) {
-    mkdir($thumbDir, 0777, true);
+if (!is_dir($thumbDir)) {
+    if (!mkdir($thumbDir, 0755, true)) {
+        die('Failed to create thumbnails directory');
+    }
 }
 
 // Process all images
 $images = glob($dir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-foreach ($images as $image) {
-    $thumbPath = $thumbDir . basename($image);
-    
-    // Check if the thumbnail already exists
-    if (!file_exists($thumbPath)) {
-        createThumbnail($image, $thumbPath, 1280, 720);
+if ($images !== false) {
+    foreach ($images as $image) {
+        // Validate image path
+        if (!validate_file_path($image)) {
+            continue;
+        }
+        
+        $thumbPath = $thumbDir . basename($image);
+        
+        // Check if the thumbnail already exists
+        if (!file_exists($thumbPath)) {
+            createThumbnail($image, $thumbPath, 1280, 720);
+        }
     }
 }
 ?>

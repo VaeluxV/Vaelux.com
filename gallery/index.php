@@ -10,8 +10,20 @@
 </head>
 <body>
     <?php
-    function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
-        return $_SERVER[$key] ?? $default;
+    // Safe function to get server variables with validation
+    function get_server_var(string $key, $default = '') {
+        return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
+    }
+
+    // Safe function to escape output
+    function e($string) {
+        return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+    }
+
+    // Validate document root
+    $document_root = get_server_var('DOCUMENT_ROOT');
+    if (empty($document_root) || !is_dir($document_root)) {
+        die('Invalid server configuration');
     }
 
     include __DIR__ . '/../headers/main_header.php';
@@ -22,27 +34,30 @@
         <p style="text-align: center; padding: 14px 28px 0px 28px">Hint: You can click on a photo to view a full-screen, high resolution version of it!</p>
         <section class="features">
             <?php
-                include $_SERVER['DOCUMENT_ROOT'] . '/gallery/generate_thumbnails.php';
+                // Use relative path instead of $_SERVER concatenation
+                include __DIR__ . '/generate_thumbnails.php';
                 
                 // Retrieve all image files from the specified directory
                 $images = glob($dir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-                foreach ($images as $image) {
-                    $thumbPath = $thumbDir . basename($image);
-                    
-                    // Check if the thumbnail already exists, if not create it
-                    if (!file_exists($thumbPath)) {
-                        createThumbnail($image, $thumbPath, 1280, 720);
+                if ($images !== false) {
+                    foreach ($images as $image) {
+                        $thumbPath = $thumbDir . basename($image);
+                        
+                        // Check if the thumbnail already exists, if not create it
+                        if (!file_exists($thumbPath)) {
+                            createThumbnail($image, $thumbPath, 1280, 720);
+                        }
+                        
+                        // Convert server path to web-accessible path
+                        $imagePath = str_replace($document_root, '', $image);
+                        $thumbPath = str_replace($document_root, '', $thumbPath);
+                        
+                        echo '<div class="feature">';
+                        echo '<a href="' . e($imagePath) . '" target="_blank" rel="noreferrer noopener">';
+                        echo '<img src="' . e($thumbPath) . '" alt="Photo">';
+                        echo '</a>';
+                        echo '</div>';
                     }
-                    
-                    // Convert server path to web-accessible path
-                    $imagePath = str_replace($_SERVER['DOCUMENT_ROOT'], '', $image);
-                    $thumbPath = str_replace($_SERVER['DOCUMENT_ROOT'], '', $thumbPath);
-                    
-                    echo '<div class="feature">';
-                    echo '<a href="' . $imagePath . '" target="_blank" rel="noreferrer noopener">';
-                    echo '<img src="' . $thumbPath . '" alt="Photo">';
-                    echo '</a>';
-                    echo '</div>';
                 }
             ?>
         </section>

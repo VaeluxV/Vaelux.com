@@ -11,8 +11,11 @@
 
 <body>
 <?php
-function server_var(string $key, $default = '') {
-    return $_SERVER[$key] ?? $default;
+// Safe function to get server variables with validation
+if (!function_exists('get_server_var')) {
+    function get_server_var(string $key, $default = '') {
+        return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
+    }
 }
 
 include __DIR__ . '/../headers/main_header.php';

@@ -12,8 +12,14 @@
 
 <body>
     <?php
-    function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
-        return $_SERVER[$key] ?? $default;
+    // Safe function to get server variables with validation
+    function get_server_var(string $key, $default = '') {
+        return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
+    }
+
+    // Safe function to escape output
+    function e($string) {
+        return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
     }
 
     include __DIR__ . '/../headers/main_header.php';
@@ -21,21 +27,16 @@
 
     <!-- Pre-load images -->
     <?php
-    $directory = '/images/irl_trains';
-    $images = glob(server_var('DOCUMENT_ROOT') . $directory . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-    foreach ($images as $image) {
-        $imagePath = $directory . '/' . basename($image);
-        echo '<img src="' . htmlspecialchars($imagePath) . '" style="display: none;" alt="">';
-    }
-    ?>
-
-    <!-- Pre-load images -->
-    <?php
-    $directory = '/images/irl_trains';
-    $images = glob($_SERVER['DOCUMENT_ROOT'] . $directory . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-    foreach ($images as $image) {
-        $imagePath = $directory . '/' . basename($image);
-        echo '<img src="' . htmlspecialchars($imagePath) . '" style="display: none;" alt="">';
+    $document_root = get_server_var('DOCUMENT_ROOT');
+    if (!empty($document_root) && is_dir($document_root)) {
+        $directory = '/images/irl_trains';
+        $images = glob($document_root . $directory . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+        if ($images !== false) {
+            foreach ($images as $image) {
+                $imagePath = $directory . '/' . basename($image);
+                echo '<img src="' . e($imagePath) . '" style="display: none;" alt="">';
+            }
+        }
     }
     ?>
 
@@ -91,37 +92,44 @@
 
     <!-- Hero Banner Script -->
     <?php
-    $imageDirectory = server_var('DOCUMENT_ROOT') . '/images/irl_trains';
-    $images = array_filter(
-        glob("{$imageDirectory}/*.{jpg,jpeg,png,gif}", GLOB_BRACE),
-        'file_exists'
-    );
+    $document_root = get_server_var('DOCUMENT_ROOT');
+    if (!empty($document_root) && is_dir($document_root)) {
+        $imageDirectory = $document_root . '/images/irl_trains';
+        $images = array_filter(
+            glob("{$imageDirectory}/*.{jpg,jpeg,png,gif}", GLOB_BRACE),
+            'file_exists'
+        );
 
-    echo "<script>
-            const images = [";
-    
-    foreach ($images as $image) {
-        $imagePath = str_replace(server_var('DOCUMENT_ROOT'), '', $image);
-        echo json_encode($imagePath) . ',';
-    }
-    
-    echo "];
-            const heroSection = document.getElementById('hero-section');
-            const heroOverlay = document.getElementById('hero-overlay');
-            heroSection.style.backgroundImage = 'url(' + images[0] + ')';
-            heroOverlay.style.backgroundImage = 'url(' + images[0] + ')';
-            let currentIndex = 0;
-            function changeImage() {
-                currentIndex = (currentIndex + 1) % images.length;
-                heroOverlay.style.backgroundImage = 'url(' + images[currentIndex] + ')';
-                heroOverlay.style.opacity = 1;
-                setTimeout(() => {
-                    heroSection.style.backgroundImage = 'url(' + images[currentIndex] + ')';
-                    heroOverlay.style.opacity = 0;
-                }, 1500);
+        if (!empty($images)) {
+            echo "<script>
+                    const images = [";
+            
+            foreach ($images as $image) {
+                $imagePath = str_replace($document_root, '', $image);
+                echo json_encode($imagePath) . ',';
             }
-            setInterval(changeImage, 7500);
-          </script>";
+            
+            echo "];
+                    const heroSection = document.getElementById('hero-section');
+                    const heroOverlay = document.getElementById('hero-overlay');
+                    if (images.length > 0) {
+                        heroSection.style.backgroundImage = 'url(' + images[0] + ')';
+                        heroOverlay.style.backgroundImage = 'url(' + images[0] + ')';
+                        let currentIndex = 0;
+                        function changeImage() {
+                            currentIndex = (currentIndex + 1) % images.length;
+                            heroOverlay.style.backgroundImage = 'url(' + images[currentIndex] + ')';
+                            heroOverlay.style.opacity = 1;
+                            setTimeout(() => {
+                                heroSection.style.backgroundImage = 'url(' + images[currentIndex] + ')';
+                                heroOverlay.style.opacity = 0;
+                            }, 1500);
+                        }
+                        setInterval(changeImage, 7500);
+                    }
+                  </script>";
+        }
+    }
     ?>
 </body>
 

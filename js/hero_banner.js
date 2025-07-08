@@ -289,6 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             html += '</div>';
         }
+        // Use innerHTML with properly escaped content to prevent XSS
         content.innerHTML = html;
     }
 
