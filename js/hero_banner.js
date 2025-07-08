@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let autoTimeout = null;
     const delayBetween = 7000;
     const fadeDuration = 600;
+    let currentVideos = { A: null, B: null }; // Track current video elements
 
     // Fetch media JSON
     fetch(jsonPath)
@@ -44,10 +45,29 @@ document.addEventListener("DOMContentLoaded", () => {
         return id === 'A' ? layerA : layerB;
     }
 
+    // Clean up video element properly
+    function cleanupVideo(layerId) {
+        if (currentVideos[layerId]) {
+            const video = currentVideos[layerId];
+            try {
+                video.pause();
+                video.removeAttribute('src');
+                video.load(); // This helps clear the video buffer
+                video.remove();
+            } catch (e) {
+                console.warn('Error cleaning up video:', e);
+            }
+            currentVideos[layerId] = null;
+        }
+    }
+
     function showMedia(idx, targetLayer, instant = false) {
         const item = media[idx];
         const layer = getLayer(targetLayer);
+        
+        // Clean up existing content
         layer.innerHTML = '';
+        
         if (item.type === 'image') {
             const img = document.createElement('img');
             img.src = item.src;
@@ -55,16 +75,50 @@ document.addEventListener("DOMContentLoaded", () => {
             img.className = 'hero-img';
             layer.appendChild(img);
         } else if (item.type === 'video') {
+            // Clean up any existing video in this layer
+            cleanupVideo(targetLayer);
+            
             const video = document.createElement('video');
             video.src = item.src;
             video.muted = true;
             video.playsInline = true;
             video.loop = true;
-            video.autoplay = true;
+            video.autoplay = false; // Don't autoplay immediately
+            video.preload = 'metadata'; // Only preload metadata, not the full video
             if (item.poster) video.poster = item.poster;
             video.className = 'hero-video';
+            
+            // Store reference to current video
+            currentVideos[targetLayer] = video;
+            
+            // Add error handling
+            video.addEventListener('error', (e) => {
+                console.error('Video error:', e);
+                // Fallback to poster image if available
+                if (item.poster) {
+                    const fallbackImg = document.createElement('img');
+                    fallbackImg.src = item.poster;
+                    fallbackImg.alt = item.title || '';
+                    fallbackImg.className = 'hero-img';
+                    layer.innerHTML = '';
+                    layer.appendChild(fallbackImg);
+                }
+            });
+            
+            // Add load event to start playing when ready
+            video.addEventListener('loadedmetadata', () => {
+                // Use requestAnimationFrame to ensure DOM is ready
+                requestAnimationFrame(() => {
+                    if (video.parentNode) { // Check if video is still in DOM
+                        video.play().catch(err => {
+                            console.warn('Autoplay failed:', err);
+                            // Video will show poster image
+                        });
+                    }
+                });
+            });
+            
             layer.appendChild(video);
-            video.play();
         }
         renderContent(item, instant);
     }
@@ -110,15 +164,22 @@ document.addEventListener("DOMContentLoaded", () => {
     function fadeTo(nextIdx) {
         if (isTransitioning || nextIdx === index) return;
         isTransitioning = true;
+        
         // Fade out text
         content.classList.remove('fade-in');
         content.classList.add('fade-out');
+        
         const nextLayer = currentLayer === 'A' ? 'B' : 'A';
+        
         setTimeout(() => {
             showMedia(nextIdx, nextLayer);
             getLayer(nextLayer).classList.add('visible');
             getLayer(currentLayer).classList.remove('visible');
+            
             setTimeout(() => {
+                // Clean up the old layer's video after transition
+                cleanupVideo(currentLayer);
+                
                 currentLayer = nextLayer;
                 index = nextIdx;
                 updateControls();
@@ -213,4 +274,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     window.addEventListener('resize', handleResize);
     handleResize();
+    
+    // Clean up on page unload
+    window.addEventListener('beforeunload', () => {
+        clearTimeout(autoTimeout);
+        cleanupVideo('A');
+        cleanupVideo('B');
+    });
+    
+    // Pause videos when page becomes hidden (tab switch, minimize, etc.)
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            // Pause all videos when page is hidden
+            Object.values(currentVideos).forEach(video => {
+                if (video) {
+                    try {
+                        video.pause();
+                    } catch (e) {
+                        console.warn('Error pausing video:', e);
+                    }
+                }
+            });
+        } else {
+            // Resume current video when page becomes visible
+            const currentVideo = currentVideos[currentLayer];
+            if (currentVideo && media[index] && media[index].type === 'video') {
+                try {
+                    currentVideo.play().catch(err => {
+                        console.warn('Error resuming video:', err);
+                    });
+                } catch (e) {
+                    console.warn('Error resuming video:', e);
+                }
+            }
+        }
+    });
 }); 
