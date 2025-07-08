@@ -42,7 +42,7 @@
     "title": "Get in Touch",
     "subtitle": "Connect on social media or send a message.",
     "buttons": [
-      { "text": "Socials", "link": "/about-me" }
+      { "text": "About me", "link": "/about-me" }
     ]
   },
   {
