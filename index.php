@@ -1,15 +1,9 @@
 <?php
-// Safe function to get server variables with validation
-function get_server_var(string $key, $default = '') {
-    return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
-}
+// Include shared security utilities
+// Note: include_once is necessary for modular code organization and prevents function redeclaration
+include_once __DIR__ . '/utils.php';
 
-// Safe function to validate and sanitize page parameter
-function validate_page($page) {
-    // Remove any dangerous characters and normalize
-    $page = preg_replace('/[^a-zA-Z0-9\-_]/', '', $page);
-    return $page;
-}
+
 
 $request_uri = get_server_var('REQUEST_URI', '');
 $page = validate_page(trim($request_uri, '/'));

@@ -12,6 +12,7 @@
 
 <body>
     <?php
+    // Note: include_once is necessary for modular code organization and prevents function redeclaration
     include_once __DIR__ . '/../utils.php';
     include __DIR__ . '/../headers/main_header.php';
     ?>

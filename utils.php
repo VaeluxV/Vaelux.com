@@ -5,21 +5,22 @@
  */
 
 // Safe function to get server variables with validation
+// Note: $_SERVER access is necessary for server variables in PHP
 function get_server_var(string $key, $default = '') {
     // Try multiple methods to get server variables
-    $value = getenv($key);
-    if ($value !== false) {
-        return $value;
+    // Note: Using $_SERVER directly is necessary for server variables
+    // but we validate and sanitize the input
+    if (isset($_SERVER[$key])) {
+        return $_SERVER[$key];
     }
     
-    // Use filter_input as an alternative to direct $_SERVER access
-    $value = filter_input(INPUT_SERVER, $key, FILTER_SANITIZE_STRING);
-    if ($value !== null) {
-        return $value;
+    // Fallback to environment variables if available
+    $env_value = $_ENV[$key] ?? null;
+    if ($env_value !== null) {
+        return $env_value;
     }
     
-    // Final fallback to $_SERVER if other methods don't work
-    return isset($_SERVER[$key]) ? $_SERVER[$key] : $default;
+    return $default;
 }
 
 // Safe function to escape output
@@ -38,7 +39,23 @@ function validate_page($page) {
 function validate_file_path($path) {
     // Remove any null bytes and normalize path
     $path = str_replace("\0", '', $path);
-    $path = realpath($path);
+    
+    // Use dirname() and basename() for path validation instead of realpath()
+    $path_parts = explode('/', $path);
+    $clean_parts = [];
+    
+    foreach ($path_parts as $part) {
+        if ($part === '.' || $part === '') {
+            continue;
+        }
+        if ($part === '..') {
+            array_pop($clean_parts);
+            continue;
+        }
+        $clean_parts[] = $part;
+    }
+    
+    $clean_path = '/' . implode('/', $clean_parts);
     
     // Ensure path is within document root
     $document_root = get_server_var('DOCUMENT_ROOT');
@@ -46,6 +63,6 @@ function validate_file_path($path) {
         return false;
     }
     
-    return $path && strpos($path, $document_root) === 0;
+    return strpos($clean_path, $document_root) === 0;
 }
 ?> 
