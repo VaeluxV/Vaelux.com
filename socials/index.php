@@ -11,10 +11,7 @@
 </head>
 <body>
     <?php
-    // function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
-    //     return $_SERVER[$key] ?? $default;
-    // }
-
+    include_once __DIR__ . '/../utils.php';
     include __DIR__ . '/../headers/main_header.php';
     ?>
 

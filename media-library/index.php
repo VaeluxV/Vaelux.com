@@ -12,10 +12,8 @@
 
 <body>
     <?php
-    // function server_var(string $key, $default = '') { // Function to get server variable(s) to prevent direct use of $_SERVER as much as possible
-    //     return $_SERVER[$key] ?? $default;
-    // }
-
+    // Note: include_once is necessary for modular code organization and prevents function redeclaration
+    include_once __DIR__ . '/../utils.php';
     include __DIR__ . '/../headers/main_header.php';
     ?>
 
@@ -199,16 +197,18 @@
                                 <span class="toggle-icon">▼</span>
                             </button>
                             <div class="collapsible-content nested-content" id="db-content">
-                                <button class="tag-filter" data-tag="db-vectron">DB Vectron</button>
+                                <button class="tag-filter" data-tag="db-ice">ICE</button>
+                                <button class="tag-filter" data-tag="db-ic">IC</button>
+                                <button class="tag-filter" data-tag="db-regional">Regional</button>
                             </div>
                         </div>
                         <div class="collapsible-section nested">
                             <button class="collapsible-toggle nested-toggle" id="other-trains-toggle">
-                                <span class="toggle-text">Other</span>
+                                <span class="toggle-text">Other Trains</span>
                                 <span class="toggle-icon">▼</span>
                             </button>
                             <div class="collapsible-content nested-content" id="other-trains-content">
-                                <button class="tag-filter" data-tag="trains-other">Other trains</button>
+                                <button class="tag-filter" data-tag="other-train">Other</button>
                             </div>
                         </div>
                     </div>
@@ -221,21 +221,42 @@
                         <span class="toggle-icon">▼</span>
                     </button>
                     <div class="collapsible-content" id="content-categories-content">
-                        <button class="tag-filter" data-tag="event">Event</button>
-                        <button class="tag-filter" data-tag="informative">Informative</button>
-                        <button class="tag-filter" data-tag="news">News</button>
                         <button class="tag-filter" data-tag="spotting">Spotting</button>
+                        <button class="tag-filter" data-tag="departure">Departure</button>
+                        <button class="tag-filter" data-tag="arrival">Arrival</button>
+                        <button class="tag-filter" data-tag="passing">Passing</button>
+                        <button class="tag-filter" data-tag="stationary">Stationary</button>
                     </div>
                 </div>
-
             </div>
         </aside>
 
-        <!-- Media Grid -->
-        <section id="media-grid"></section>
+        <!-- Main content area -->
+        <div class="main-content">
+            <div id="media-grid" class="media-grid">
+                <!-- Media items will be loaded here -->
+            </div>
+        </div>
     </main>
-    <script src="/js/media_library.js"></script>
+
+    <!-- Fullscreen Modal -->
+    <div id="fullscreen-modal" class="fullscreen-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-media">
+                <img id="modal-image" src="" alt="">
+                <iframe id="modal-video" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="modal-info">
+                <h3 id="modal-title"></h3>
+                <p id="modal-description"></p>
+                <div id="modal-tags"></div>
+            </div>
+        </div>
+    </div>
+
     <?php include __DIR__ . '/../footers/main_footer.php'; ?>
+    <script src="/js/media_library.js"></script>
 </body>
 
 </html>
