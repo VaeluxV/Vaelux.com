@@ -11,6 +11,7 @@
             <!-- <li><a href="/media-library">Media Library</a></li> -->
             <!--<li><a href="/train-sim-project">My Train Simulator Cab Project</a></li>
             <li><a href="/projects">My Projects</a></li>-->
+            <li><a href="/auth/">Account</a></li>
         </ul>
     </nav>
 </header>
