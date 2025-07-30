@@ -77,7 +77,7 @@ function profile_pic_title($path) {
         </form>
     </div>
     
-    <div class="dashboard-forms-right">
+    <div class="dashboard-forms-center">
         <form class="dashboard-form" id="email-form" method="POST">
             <label for="new_email">Change Email:</label>
             <input type="email" name="new_email" id="new_email" placeholder="New Email" required>
@@ -85,7 +85,9 @@ function profile_pic_title($path) {
             <input type="password" name="current_password_email" id="current_password_email" placeholder="Current Password" required>
             <button type="submit">Change Email</button>
         </form>
-        
+    </div>
+    
+    <div class="dashboard-forms-right">
         <form class="dashboard-form" id="password-form" method="POST">
             <label for="current_password">Current Password:</label>
             <input type="password" name="current_password" id="current_password" placeholder="Current Password" required>

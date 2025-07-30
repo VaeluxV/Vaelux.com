@@ -5,7 +5,7 @@ body {
 }
 
 .auth-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 2rem auto;
     padding: 0 2rem;
 }
@@ -16,25 +16,91 @@ body {
     gap: 2rem;
 }
 
-/* Desktop layout - side by side forms */
-@media (min-width: 1000px) {
+.auth-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-help-container {
+    align-self: center;
+}
+
+/* Large desktop layout - three columns including help section */
+@media (min-width: 1400px) {
+    .auth-container {
+        max-width: 1600px;
+    }
+    
     .auth-forms-wrapper {
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
         gap: 3rem;
+        flex-wrap: wrap;
+    }
+    
+    .auth-form-container {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .auth-help-container {
+        flex: 1;
+        min-width: 0;
+        align-self: stretch;
     }
     
     .auth-form {
-        flex: 1;
-        max-width: 400px;
+        max-width: 100%;
     }
 }
 
-/* Medium screen layout */
+/* Standard desktop layout - three columns including help section */
+@media (min-width: 1000px) and (max-width: 1399px) {
+    .auth-forms-wrapper {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .auth-form-container {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .auth-help-container {
+        flex: 1;
+        min-width: 0;
+        align-self: stretch;
+    }
+    
+    .auth-form {
+        max-width: 100%;
+    }
+}
+
+/* Medium screen layout - help section stacks below */
 @media (min-width: 600px) and (max-width: 999px) {
     .auth-container {
-        max-width: 600px;
+        max-width: 700px;
+    }
+    
+    .auth-forms-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .auth-form-container {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .auth-help-container {
+        width: 100%;
+        max-width: 500px;
+        margin-top: 1rem;
     }
 }
 
@@ -47,6 +113,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 8px #0008;
 }
+
+
+
+
 
 .auth-form input {
     width: 100%;
@@ -86,16 +156,26 @@ body {
 }
 
 /* Mobile Responsive */
-@media (max-width: 600px) {
+@media (max-width: 599px) {
     .auth-container {
         padding: 0 1rem;
         margin: 1rem auto;
+        max-width: 95vw;
+    }
+    
+    .auth-form-container {
+        width: 100%;
+    }
+    
+    .auth-help-container {
+        width: 100%;
+        margin-top: 1rem;
     }
     
     .auth-form {
-        padding: 1rem;
-        margin: 1rem;
-        max-width: 98vw;
+        padding: 1.5rem;
+        margin: 0.5rem;
+        max-width: 100%;
     }
     
     .auth-form input, 

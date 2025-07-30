@@ -16,3 +16,12 @@ Subject: Verify your Vaelux.com account
 Verification Link: http://localhost/auth/verify.php?id=1&token=50f1086927906339cced5c0c7eb959dde13e72c5c0c4e92a576ad5015f9f13e9
 Time: 2025-07-30 01:53:50
 ================================================================================
+
+================================================================================
+DEVELOPMENT MODE - EMAIL VERIFICATION
+================================================================================
+To: vaelux_v@outlook.com
+Subject: Verify your Vaelux.com account
+Verification Link: http://localhost/auth/verify.php?id=2&token=25c7120b37b4e3a3eda9475358292b3b16cc5a71603d9ee31f1daa9ff0266aca
+Time: 2025-07-30 02:21:45
+================================================================================

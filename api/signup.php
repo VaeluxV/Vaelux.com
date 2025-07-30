@@ -9,6 +9,7 @@ try {
     require_once __DIR__ . '/../includes/db.php';
     require_once __DIR__ . '/../includes/email_service.php';
     require_once __DIR__ . '/../config/email_credentials.php';
+    require_once __DIR__ . '/../config/turnstile_keys.php';
 
     // Helper to generate unique UUID
     function generateUniqueUUID($db) {
@@ -26,6 +27,43 @@ try {
         return bin2hex(random_bytes(32));
     }
 
+    // Helper to verify Turnstile token
+    function verifyTurnstileToken($token) {
+        global $turnstile_secretkey;
+        
+        // Debug: Log the token and secret key
+        error_log("Turnstile verification - Token: " . substr($token, 0, 20) . "...");
+        error_log("Turnstile verification - Secret key: " . substr($turnstile_secretkey, 0, 10) . "...");
+        
+        $data = [
+            'secret' => $turnstile_secretkey,
+            'response' => $token
+        ];
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        
+        // Debug: Log the response
+        error_log("Turnstile verification - HTTP Code: " . $httpCode);
+        error_log("Turnstile verification - Response: " . $response);
+        
+        $result = json_decode($response, true);
+        $success = $result && isset($result['success']) && $result['success'];
+        
+        // Debug: Log the result
+        error_log("Turnstile verification - Success: " . ($success ? 'true' : 'false'));
+        
+        return $success;
+    }
+
     // Validate and sanitize inputs
     $data = json_decode(file_get_contents("php://input"), true);
     
@@ -39,6 +77,7 @@ try {
     $email = trim($data['email'] ?? '');
     $password = $data['password'] ?? '';
     $displayName = trim($data['display_name'] ?? '');
+    $turnstileToken = $data['cf-turnstile-response'] ?? '';
 
     // Basic validation
     if (!$username || !$email || !$password || !$displayName) {
@@ -46,6 +85,22 @@ try {
         echo json_encode(['error' => 'Missing required fields']);
         exit;
     }
+
+    // Temporarily disable Turnstile verification for debugging
+    /*
+    if (!$turnstileToken) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Please complete the security check']);
+        exit;
+    }
+
+    // Verify Turnstile token
+    if (!verifyTurnstileToken($turnstileToken)) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Security check failed. Please try again.']);
+        exit;
+    }
+    */
 
     // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

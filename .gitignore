@@ -6,3 +6,4 @@ htdocs.code-workspace
 /images/profiles
 *.mp4
 config/turnstile_keys.php
+/data/
