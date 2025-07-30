@@ -7,3 +7,4 @@ htdocs.code-workspace
 *.mp4
 config/turnstile_keys.php
 /data/
+*.sqlite
