@@ -1,0 +1,18 @@
+
+================================================================================
+DEVELOPMENT MODE - EMAIL VERIFICATION
+================================================================================
+To: test@example.com
+Subject: Verify your Vaelux.com account
+Verification Link: http:///auth/verify.php?id=1&token=test-token-123
+Time: 2025-07-30 01:52:58
+================================================================================
+
+================================================================================
+DEVELOPMENT MODE - EMAIL VERIFICATION
+================================================================================
+To: vaelux@outlook.com
+Subject: Verify your Vaelux.com account
+Verification Link: http://localhost/auth/verify.php?id=1&token=50f1086927906339cced5c0c7eb959dde13e72c5c0c4e92a576ad5015f9f13e9
+Time: 2025-07-30 01:53:50
+================================================================================

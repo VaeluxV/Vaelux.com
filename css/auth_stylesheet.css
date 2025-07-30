@@ -1,41 +1,105 @@
+/* Auth Styles */
+body {
+    background: #181a1b;
+    color: #f3e0eb;
+}
+
 .auth-container {
-    max-width: 400px;
-    margin: 50px auto;
-    background-color: #3a2b2f;
-    padding: 20px;
-    border-radius: 10px;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
 }
 
-.auth-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.auth-container form {
+.auth-forms-wrapper {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
 }
 
-.auth-container label {
-    margin-bottom: 15px;
-    font-size: 16px;
+/* Desktop layout - side by side forms */
+@media (min-width: 1000px) {
+    .auth-forms-wrapper {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+    
+    .auth-form {
+        flex: 1;
+        max-width: 400px;
+    }
 }
 
-.auth-container input,
-.auth-container select {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid #666;
-    background: #fff;
-    color: #000;
+/* Medium screen layout */
+@media (min-width: 600px) and (max-width: 999px) {
+    .auth-container {
+        max-width: 600px;
+    }
 }
 
-.auth-container .error {
-    background: #a00020;
-    color: white;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    font-weight: bold;
+.auth-form {
+    margin-bottom: 2rem;
+    max-width: 400px;
+    margin-inline: auto;
+    background: #23272a;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #0008;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.2rem;
+    margin: 8px 0;
+    background: #181a1b;
+    color: #f3e0eb;
+    border: 1px solid #444;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.auth-form button {
+    padding: 12px 0;
+    font-size: 1.1rem;
+    width: 100%;
+    border-radius: 50px;
+    background: #c9085c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.auth-form button:hover {
+    background: #b50c33;
+}
+
+.cf-turnstile {
+    margin: 16px 0;
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .auth-container {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+    
+    .auth-form {
+        padding: 1rem;
+        margin: 1rem;
+        max-width: 98vw;
+    }
+    
+    .auth-form input, 
+    .auth-form button {
+        font-size: 1rem;
+    }
 }

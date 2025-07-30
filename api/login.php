@@ -23,6 +23,17 @@ if (!$user || !password_verify($password, $user['password_hash'])) {
     exit;
 }
 
+// Check if email is verified
+if (!$user['email_verified']) {
+    http_response_code(403);
+    echo json_encode([
+        'error' => 'Email not verified', 
+        'message' => 'Please check your email and click the verification link before logging in.',
+        'email' => $user['email']
+    ]);
+    exit;
+}
+
 session_start();
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['username'] = $user['username'];

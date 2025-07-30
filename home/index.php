@@ -17,11 +17,21 @@ function server_var(string $key, $default = '') {
 
 include __DIR__ . '/../headers/main_header.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$is_logged_in = isset($_SESSION['user_id']);
+
 $json_path = '/images/hero-banner/hero_banner_home.json';
 ?>
 
 <main>
     <?php include __DIR__ . '/../components/hero_banner.php'; ?>
+    <?php if ($is_logged_in): ?>
+        <div style="text-align:center;margin-bottom:1rem;">
+            <a href="/dashboard" class="cta-button">Go to Dashboard</a>
+        </div>
+    <?php endif; ?>
     <section class="features">
         <div class="feature">
             <h2 class="h2subhead">Website WIP</h2>
