@@ -28,7 +28,7 @@
                 <img src="/images/profiles/Eurostar-PBKA-square.jpg" alt="Placeholder Photo" class="about-me-photo">
                 <h2>Vaelux</h2>
                 <p>Hi, I'm Valerie, also known as "Vaelux" online!</p>
-                <p>I am 20 years old, and have a wide range of hobbies.</p>
+                <p>I am 21 years old, and have a wide range of hobbies.</p>
                 <p>These hobbies include:</p>
                 <ul>
                     <li>3D printing</li>
