@@ -15,7 +15,7 @@ if (strpos($json_path, '/images/hero-banner/') !== 0) {
     <div class="hero hero-layer visible" id="layerA"></div>
     <div class="hero hero-layer" id="layerB"></div>
     <div class="hero-content">
-        <!-- Optional: Add static content here if needed -->
+        <!-- Room for optional static content -->
     </div>
     <div class="hero-controls">
         <!-- JS will inject dots here -->
