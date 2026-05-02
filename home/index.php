@@ -27,8 +27,8 @@ $json_path = '/images/hero-banner/hero_banner_home.json';
             <h2 class="h2subhead">Website WIP</h2>
             <p>The website is still a work in progress.</p>
             <br>
-            <h2 class="h2subhead">Media gallery</h2>
-            <a href="/media-library" class="cta-button">To the full media gallery</a>
+            <h2 class="h2subhead">Media library</h2>
+            <a href="/media-library" class="cta-button">To the full media library</a>
         </div>
         <div class="feature">
             <h2 class="h2subhead">About me</h2>
