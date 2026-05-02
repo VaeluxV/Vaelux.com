@@ -1,5 +1,5 @@
 <footer>
-    <p>&copy; 2025 Vaelux</p>
+    <p>&copy; 2026 Vaelux</p>
     <nav>
         <ul>
             <li><a href="mailto:inquiries.vaelux@outlook.com">Contact</a></li>
